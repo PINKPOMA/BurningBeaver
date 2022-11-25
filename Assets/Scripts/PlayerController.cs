@@ -4,33 +4,22 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5.0f;
-
     public Transform movePoint;
-
     public LayerMask whatStopsMovement;
-
     public LayerMask water;
-
+    public LayerMask flame;
     public SpriteRenderer spriteRenderer;
-
     public int waterCollected;
-
     public int waterCapacity = 1;
-
     public TextMeshProUGUI guideText;
-
     public SystemMessage sysMsg;
-
     public GameObject waterSpillPrefab;
-
     public Sprite sideBeaverSprite;
     public Sprite sideFullBeaverSprite;
-
     public Sprite topBeaverSprite;
     public Sprite topFullBeaverSprite;
-
     public HpGauge hpGauge;
-    
+
     void Start()
     {
         movePoint.parent = null;
@@ -65,6 +54,12 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (Physics2D.OverlapCircle(movePoint.position, 0.2f, flame))
+        {
+            hpGauge.FillAmount -= 0.2f * Time.deltaTime;
+            hpGauge.Shake();
+        }
+        
         if (waterCollected > 0)
         {
             if (spriteRenderer.sprite == sideBeaverSprite)
@@ -87,7 +82,7 @@ public class PlayerController : MonoBehaviour
                 spriteRenderer.sprite = topBeaverSprite;
             }
         }
-        
+
         //spriteRenderer.color = waterCollected > 0 ? Color.blue : isNearWater ? Color.cyan : Color.white;
 
         guideText.text = waterCollected == 0 && isNearWater ? "스페이스를 눌러 물을 담으세요." : "";
@@ -126,13 +121,10 @@ public class PlayerController : MonoBehaviour
             movePoint.position += delta;
 
 
-
-            
-            
             if (delta.x != 0)
             {
                 spriteRenderer.sprite = sideBeaverSprite;
-                
+
                 spriteRenderer.flipX = delta.x switch
                 {
                     < 0 => true,
@@ -144,7 +136,7 @@ public class PlayerController : MonoBehaviour
             else if (delta.y != 0)
             {
                 spriteRenderer.sprite = topBeaverSprite;
-                
+
                 spriteRenderer.flipX = false;
                 spriteRenderer.flipY = delta.y switch
                 {

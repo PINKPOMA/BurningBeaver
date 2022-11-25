@@ -614,6 +614,9 @@ MonoBehaviour:
   water:
     serializedVersion: 2
     m_Bits: 64
+  flame:
+    serializedVersion: 2
+    m_Bits: 128
   spriteRenderer: {fileID: 719606808}
   waterCollected: 0
   waterCapacity: 1
