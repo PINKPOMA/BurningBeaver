@@ -24,8 +24,7 @@ public class PlayerController : MonoBehaviour
         movePoint.parent = null;
     }
 
-    static readonly Vector2[] dirs = new Vector2[]
-    {
+    static readonly Vector2[] Dirs = {
         Vector2.right,
         Vector2.left,
         Vector2.up,
@@ -43,7 +42,7 @@ public class PlayerController : MonoBehaviour
         }
 
         var isNearWater = false;
-        foreach (var dir in dirs)
+        foreach (var dir in Dirs)
         {
             if (Physics2D.OverlapCircle((Vector2)movePoint.position + dir, 0.2f, water))
             {
