@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,14 +12,21 @@ public class PlayerController : MonoBehaviour
     public LayerMask water;
 
     public SpriteRenderer spriteRenderer;
+
+    public int waterCollected;
+
+    public int waterCapacity = 1;
+
+    public TextMeshProUGUI guideText;
+
+    public SystemMessage sysMsg;
     
     void Start()
     {
         movePoint.parent = null;
     }
 
-    static readonly Vector2[] dirs = new Vector2[]
-    {
+    static readonly Vector2[] Dirs = {
         Vector2.right,
         Vector2.left,
         Vector2.up,
@@ -36,7 +44,7 @@ public class PlayerController : MonoBehaviour
         }
 
         var isNearWater = false;
-        foreach (var dir in dirs)
+        foreach (var dir in Dirs)
         {
             if (Physics2D.OverlapCircle((Vector2)movePoint.position + dir, 0.2f, water))
             {
@@ -45,7 +53,22 @@ public class PlayerController : MonoBehaviour
             }
         }
         
-        spriteRenderer.color = isNearWater ? Color.cyan : Color.white;
+        spriteRenderer.color = waterCollected > 0 ? Color.blue : isNearWater ? Color.cyan : Color.white;
+
+        guideText.text = waterCollected == 0 && isNearWater ? "스페이스를 눌러 물을 담으세요." : "";
+
+        if (isNearWater && Input.GetKeyDown(KeyCode.Space))
+        {
+            if (waterCollected < waterCapacity)
+            {
+                waterCollected++;
+                sysMsg.Create("물을 담았습니다.");
+            }
+            else
+            {
+                sysMsg.Create("더 담을 수 없습니다.");
+            }
+        }
     }
 
     void UpdateMovement(float axisValue, Vector3 axis)
