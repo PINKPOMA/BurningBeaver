@@ -24,8 +24,10 @@ public class PlayerController : MonoBehaviour
     public GameObject waterSpillPrefab;
 
     public Sprite sideBeaverSprite;
+    public Sprite sideFullBeaverSprite;
 
     public Sprite topBeaverSprite;
+    public Sprite topFullBeaverSprite;
     
     void Start()
     {
@@ -60,7 +62,30 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        spriteRenderer.color = waterCollected > 0 ? Color.blue : isNearWater ? Color.cyan : Color.white;
+        if (waterCollected > 0)
+        {
+            if (spriteRenderer.sprite == sideBeaverSprite)
+            {
+                spriteRenderer.sprite = sideFullBeaverSprite;
+            }
+            else if (spriteRenderer.sprite == topBeaverSprite)
+            {
+                spriteRenderer.sprite = topFullBeaverSprite;
+            }
+        }
+        else
+        {
+            if (spriteRenderer.sprite == sideFullBeaverSprite)
+            {
+                spriteRenderer.sprite = sideBeaverSprite;
+            }
+            else if (spriteRenderer.sprite == topFullBeaverSprite)
+            {
+                spriteRenderer.sprite = topBeaverSprite;
+            }
+        }
+        
+        //spriteRenderer.color = waterCollected > 0 ? Color.blue : isNearWater ? Color.cyan : Color.white;
 
         guideText.text = waterCollected == 0 && isNearWater ? "스페이스를 눌러 물을 담으세요." : "";
 

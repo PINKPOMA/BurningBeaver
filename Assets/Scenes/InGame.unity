@@ -620,8 +620,10 @@ MonoBehaviour:
   guideText: {fileID: 136397310}
   sysMsg: {fileID: 1813610547}
   waterSpillPrefab: {fileID: 2422655044596552439, guid: 74f26dbac31b842ebb80d62e0b739d17, type: 3}
-  sideBeaverSprite: {fileID: -152984019, guid: 122bb6c0759b003469a21edcc9d751a5, type: 3}
-  topBeaverSprite: {fileID: 1184925715, guid: d2d6646f0580053409942071528fd649, type: 3}
+  sideBeaverSprite: {fileID: 192297651, guid: 122bb6c0759b003469a21edcc9d751a5, type: 3}
+  sideFullBeaverSprite: {fileID: -152984019, guid: 122bb6c0759b003469a21edcc9d751a5, type: 3}
+  topBeaverSprite: {fileID: -1676476025, guid: d2d6646f0580053409942071528fd649, type: 3}
+  topFullBeaverSprite: {fileID: 1184925715, guid: d2d6646f0580053409942071528fd649, type: 3}
 --- !u!4 &684248661
 Transform:
   m_ObjectHideFlags: 0
