@@ -12328,6 +12328,10 @@ MonoBehaviour:
   whatStopsMovement:
     serializedVersion: 2
     m_Bits: 64
+  water:
+    serializedVersion: 2
+    m_Bits: 64
+  spriteRenderer: {fileID: 1240123885}
 --- !u!4 &1743445436
 Transform:
   m_ObjectHideFlags: 0
