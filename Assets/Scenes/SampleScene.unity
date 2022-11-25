@@ -12521,6 +12521,9 @@ MonoBehaviour:
   water:
     serializedVersion: 2
     m_Bits: 64
+  flame:
+    serializedVersion: 2
+    m_Bits: 0
   spriteRenderer: {fileID: 1240123885}
   waterCollected: 0
   waterCapacity: 1
@@ -12531,6 +12534,7 @@ MonoBehaviour:
   sideFullBeaverSprite: {fileID: 0}
   topBeaverSprite: {fileID: 0}
   topFullBeaverSprite: {fileID: 0}
+  hpGauge: {fileID: 0}
 --- !u!4 &1743445436
 Transform:
   m_ObjectHideFlags: 0
