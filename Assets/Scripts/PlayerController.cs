@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public int waterCapacity = 1;
 
     public TextMeshProUGUI guideText;
+
+    public SystemMessage sysMsg;
     
     void Start()
     {
@@ -60,6 +62,11 @@ public class PlayerController : MonoBehaviour
             if (waterCollected < waterCapacity)
             {
                 waterCollected++;
+                sysMsg.Create("물을 담았습니다.");
+            }
+            else
+            {
+                sysMsg.Create("더 담을 수 없습니다.");
             }
         }
     }
