@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI guideText;
 
     public SystemMessage sysMsg;
+
+    public GameObject waterSpillPrefab;
     
     void Start()
     {
@@ -68,6 +70,12 @@ public class PlayerController : MonoBehaviour
             {
                 sysMsg.Create("더 담을 수 없습니다.");
             }
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && waterCollected > 0)
+        {
+            waterCollected--;
+
+            Instantiate(waterSpillPrefab, transform.position, Quaternion.identity);
         }
     }
 
