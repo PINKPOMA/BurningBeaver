@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -19,7 +20,8 @@ public class PlayerController : MonoBehaviour
     public Sprite topBeaverSprite;
     public Sprite topFullBeaverSprite;
     public HpGauge hpGauge;
-
+    public bool isDead;
+    
     void Start()
     {
         movePoint.parent = null;
@@ -36,6 +38,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (isDead)
+        {
+            return;
+        }
+        
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, movePoint.position) <= 0.05f)
@@ -52,12 +59,6 @@ public class PlayerController : MonoBehaviour
                 isNearWater = true;
                 break;
             }
-        }
-
-        if (Physics2D.OverlapCircle(movePoint.position, 0.2f, flame))
-        {
-            hpGauge.FillAmount -= 0.2f * Time.deltaTime;
-            hpGauge.Shake();
         }
         
         if (waterCollected > 0)
@@ -104,6 +105,22 @@ public class PlayerController : MonoBehaviour
             waterCollected--;
 
             Instantiate(waterSpillPrefab, transform.position, Quaternion.identity);
+        }
+        
+        
+        if (Physics2D.OverlapCircle(movePoint.position, 0.2f, flame))
+        {
+            hpGauge.FillAmount -= 0.2f * Time.deltaTime;
+            if (hpGauge.FillAmount <= 0)
+            {
+                isDead = true;
+                spriteRenderer.sprite = sideBeaverSprite;
+                spriteRenderer.flipX = false;
+                spriteRenderer.flipY = false;
+                spriteRenderer.transform.DOLocalRotate(new Vector3(0, 0, 90), 0.25f);
+                spriteRenderer.transform.DOBlendableLocalMoveBy(Vector2.down / 4, 0.25f);
+            }
+            hpGauge.Shake();
         }
     }
 
