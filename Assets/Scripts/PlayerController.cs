@@ -28,10 +28,13 @@ public class PlayerController : MonoBehaviour
 
     public Sprite topBeaverSprite;
     public Sprite topFullBeaverSprite;
+
+    public HpGauge hpGauge;
     
     void Start()
     {
         movePoint.parent = null;
+        hpGauge.FillAmount = 1.0f;
     }
 
     static readonly Vector2[] Dirs =
