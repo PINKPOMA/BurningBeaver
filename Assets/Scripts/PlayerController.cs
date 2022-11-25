@@ -8,38 +8,34 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask whatStopsMovement;
 
-    // Start is called before the first frame update
     void Start()
     {
         movePoint.parent = null;
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, movePoint.position) <= 0.05f)
         {
-            // ReSharper disable once CompareOfFloatsByEqualityOperator
-            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
-            {
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0), .2f,
-                        whatStopsMovement))
-                {
-                    movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);    
-                }
-            }
+            UpdateMovement(Input.GetAxisRaw("Horizontal"), Vector2.right);
+            UpdateMovement(Input.GetAxisRaw("Vertical"), Vector2.up);
+        }
+    }
 
-            // ReSharper disable once CompareOfFloatsByEqualityOperator
-            if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
-            {
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0, Input.GetAxisRaw("Vertical"), 0), .2f,
-                        whatStopsMovement))
-                {
-                    movePoint.position += new Vector3(0, Input.GetAxisRaw("Vertical"), 0);    
-                }
-            }
+    void UpdateMovement(float axisValue, Vector3 axis)
+    {
+        // ReSharper disable once CompareOfFloatsByEqualityOperator
+        if (Mathf.Abs(axisValue) != 1.0f)
+        {
+            return;
+        }
+        
+        var delta = axisValue * axis;
+        if (!Physics2D.OverlapCircle(movePoint.position + delta, 0.2f, whatStopsMovement))
+        {
+            movePoint.position += delta;
         }
     }
 }
