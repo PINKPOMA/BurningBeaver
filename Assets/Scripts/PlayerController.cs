@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         
         spriteRenderer.color = waterCollected > 0 ? Color.blue : isNearWater ? Color.cyan : Color.white;
 
-        guideText.text = waterCollected == 0 && isNearWater ? "Press 'Space' to collect water." : "";
+        guideText.text = waterCollected == 0 && isNearWater ? "스페이스를 눌러 물을 담으세요." : "";
 
         if (isNearWater && Input.GetKeyDown(KeyCode.Space))
         {
