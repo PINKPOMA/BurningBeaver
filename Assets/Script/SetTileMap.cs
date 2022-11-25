@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class SetTile : MonoBehaviour
+public class SetTileMap : MonoBehaviour
 {
   [SerializeField]private Tilemap fireTileMap;
   [SerializeField]private TileBase fireTileBase;
@@ -10,17 +10,18 @@ public class SetTile : MonoBehaviour
 
   private void Start()
   {
+    var newTileMap = Instantiate(fireTileMap, Vector3.zero, Quaternion.identity);
     StartCoroutine(SpreadFrame());
   }
 
   private IEnumerator SpreadFrame()
   {
-    fireTileMap.SetTile(tilePos, fireTileBase);
     yield return new WaitForSeconds(2f);
     if(Random.Range(0,2) == 0)
       tilePos.x += ReturnAddPos();
     else
       tilePos.y += ReturnAddPos();
+    Instantiate(fireTileMap, tilePos, Quaternion.identity);
     StartCoroutine(SpreadFrame());
   }
 
