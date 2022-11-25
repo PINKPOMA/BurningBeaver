@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Colliding : MonoBehaviour
 {
+   private bool _isPlaying;
    private void Update()
    {
       if (Input.GetKeyDown(KeyCode.Space)) StartCoroutine(Spill());
@@ -11,13 +12,17 @@ public class Colliding : MonoBehaviour
 
    IEnumerator Spill()
    {
-      for (int i = 0; i < 10; i++)
+      if (!_isPlaying)
       {
-         transform.localScale += new Vector3(0.6f, 0.6f, 0);
-         yield return new WaitForSeconds(0.05f);
+         _isPlaying = true;
+         for (int i = 0; i < 10; i++)
+         {
+            transform.localScale += new Vector3(0.6f, 0.6f, 0);
+            yield return new WaitForSeconds(0.05f);
+         }
+         transform.localScale = Vector3.zero;
+         _isPlaying = false;
       }
-
-      transform.localScale = Vector3.zero;
    }
 
    private void OnTriggerEnter2D(Collider2D col)
