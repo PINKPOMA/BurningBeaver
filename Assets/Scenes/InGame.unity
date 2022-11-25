@@ -16362,4 +16362,4 @@ MonoBehaviour:
   fireTileMap: {fileID: 2958329026369829304, guid: af0911439fe7ac744a5fb12e68a42d9d, type: 3}
   fireTileBase: {fileID: 11400000, guid: 57f5dac0b79921746b469109bca77b0a, type: 2}
   tilePos: {x: 0, y: 0, z: 0}
-  spreadDelay: 2
+  spreadDelay: 0
