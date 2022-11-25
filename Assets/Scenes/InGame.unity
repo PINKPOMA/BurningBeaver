@@ -620,6 +620,8 @@ MonoBehaviour:
   guideText: {fileID: 136397310}
   sysMsg: {fileID: 1813610547}
   waterSpillPrefab: {fileID: 2422655044596552439, guid: 74f26dbac31b842ebb80d62e0b739d17, type: 3}
+  sideBeaverSprite: {fileID: -152984019, guid: 122bb6c0759b003469a21edcc9d751a5, type: 3}
+  topBeaverSprite: {fileID: 1184925715, guid: d2d6646f0580053409942071528fd649, type: 3}
 --- !u!4 &684248661
 Transform:
   m_ObjectHideFlags: 0
@@ -696,7 +698,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -152984019, guid: 122bb6c0759b003469a21edcc9d751a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -716,7 +718,7 @@ Transform:
   m_GameObject: {fileID: 719606807}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 684248661}

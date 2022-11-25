@@ -22,13 +22,18 @@ public class PlayerController : MonoBehaviour
     public SystemMessage sysMsg;
 
     public GameObject waterSpillPrefab;
+
+    public Sprite sideBeaverSprite;
+
+    public Sprite topBeaverSprite;
     
     void Start()
     {
         movePoint.parent = null;
     }
 
-    static readonly Vector2[] Dirs = {
+    static readonly Vector2[] Dirs =
+    {
         Vector2.right,
         Vector2.left,
         Vector2.up,
@@ -54,7 +59,7 @@ public class PlayerController : MonoBehaviour
                 break;
             }
         }
-        
+
         spriteRenderer.color = waterCollected > 0 ? Color.blue : isNearWater ? Color.cyan : Color.white;
 
         guideText.text = waterCollected == 0 && isNearWater ? "스페이스를 눌러 물을 담으세요." : "";
@@ -86,11 +91,40 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        
+
         var delta = axisValue * axis;
         if (!Physics2D.OverlapCircle(movePoint.position + delta, 0.2f, whatStopsMovement))
         {
             movePoint.position += delta;
+
+
+
+            
+            
+            if (delta.x != 0)
+            {
+                spriteRenderer.sprite = sideBeaverSprite;
+                
+                spriteRenderer.flipX = delta.x switch
+                {
+                    < 0 => true,
+                    > 0 => false,
+                    _ => spriteRenderer.flipX
+                };
+                spriteRenderer.flipY = false;
+            }
+            else if (delta.y != 0)
+            {
+                spriteRenderer.sprite = topBeaverSprite;
+                
+                spriteRenderer.flipX = false;
+                spriteRenderer.flipY = delta.y switch
+                {
+                    < 0 => true,
+                    > 0 => false,
+                    _ => spriteRenderer.flipY
+                };
+            }
         }
     }
 }
