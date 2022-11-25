@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +12,12 @@ public class PlayerController : MonoBehaviour
     public LayerMask water;
 
     public SpriteRenderer spriteRenderer;
+
+    public int waterCollected;
+
+    public int waterCapacity = 1;
+
+    public TextMeshProUGUI guideText;
     
     void Start()
     {
@@ -45,7 +52,17 @@ public class PlayerController : MonoBehaviour
             }
         }
         
-        spriteRenderer.color = isNearWater ? Color.cyan : Color.white;
+        spriteRenderer.color = waterCollected > 0 ? Color.blue : isNearWater ? Color.cyan : Color.white;
+
+        guideText.text = waterCollected == 0 && isNearWater ? "Press 'Space' to collect water." : "";
+
+        if (isNearWater && Input.GetKeyDown(KeyCode.Space))
+        {
+            if (waterCollected < waterCapacity)
+            {
+                waterCollected++;
+            }
+        }
     }
 
     void UpdateMovement(float axisValue, Vector3 axis)
