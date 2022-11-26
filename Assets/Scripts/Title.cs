@@ -1,13 +1,13 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Title : MonoBehaviour
 {
-    public Color c1;
-
-    public Color c2;
-
-    public Camera cam;
+    [SerializeField] private Color c1;
+    [SerializeField] private Color c2;
+    [SerializeField] private Camera cam;
+    [SerializeField] private GameObject credits;
     
     void Update()
     {
@@ -17,5 +17,11 @@ public class Title : MonoBehaviour
     public void OnStartGame()
     {
         SceneManager.LoadScene("InGame");
+    }
+
+    public void OnCredits()
+    {
+        credits.gameObject.SetActive(true);
+        credits.transform.GetChild(0).DOPunchScale(Vector3.one / 5, 0.25f);
     }
 }
