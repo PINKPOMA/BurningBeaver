@@ -12,6 +12,7 @@ public class ShopOpen : MonoBehaviour
       if (Input.GetKeyDown(KeyCode.E))
       {
          shopUI.SetActive(true);
+         
          Time.timeScale = 0;
       }
    }
