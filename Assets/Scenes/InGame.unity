@@ -693,10 +693,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1813610551}
     m_Modifications:
-    - target: {fileID: 4033701518581625809, guid: fc251fb29154ae24fa4b4586162a8120, type: 3}
-      propertyPath: maxBukket
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4033701518581625810, guid: fc251fb29154ae24fa4b4586162a8120, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -784,10 +780,6 @@ PrefabInstance:
     - target: {fileID: 4033701518581625821, guid: fc251fb29154ae24fa4b4586162a8120, type: 3}
       propertyPath: m_Name
       value: Shop
-      objectReference: {fileID: 0}
-    - target: {fileID: 4033701518581625821, guid: fc251fb29154ae24fa4b4586162a8120, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc251fb29154ae24fa4b4586162a8120, type: 3}
