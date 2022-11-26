@@ -23,6 +23,7 @@ public class SetTileMap : MonoBehaviour
 
   private void Start()
   {
+    playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     tilePos.x = (int)transform.position.x;
     tilePos.y = (int)transform.position.y;
     StartCoroutine(SpreadFlame());
