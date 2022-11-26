@@ -5,7 +5,6 @@ using UnityEngine.Tilemaps;
 public class SetTileMap : MonoBehaviour
 {
   [SerializeField]private Tilemap fireTileMap;
-  [SerializeField]private TileBase fireTileBase;
   [SerializeField]private Vector3Int tilePos;
   [SerializeField]private float spreadDelay;
   
