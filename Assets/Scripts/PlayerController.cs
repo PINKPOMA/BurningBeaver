@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
 
     const float CheckOverlapRadius = 0.2f;
 
+    public bool IsDead => isDead;
+
     void Start()
     {
         movePoint.parent = null;
@@ -69,6 +71,17 @@ public class PlayerController : MonoBehaviour
                 break;
             }
         }
+        
+        var isNearFlame = false;
+        foreach (var dir in Dirs)
+        {
+            if (Physics2D.OverlapCircle((Vector2)movePoint.position + dir, CheckOverlapRadius, flame))
+            {
+                isNearFlame = true;
+                break;
+            }
+        }
+        
 
         if (Physics2D.OverlapCircle(movePoint.position, CheckOverlapRadius, item))
         {
@@ -108,17 +121,23 @@ public class PlayerController : MonoBehaviour
         //spriteRenderer.color = waterCollected > 0 ? Color.blue : isNearWater ? Color.cyan : Color.white;
 
         // 물을 하나도 안모은 상태에서 물 근처에 있다면 물을 담는 선택지 밖에 없다.
-        guideText.text = waterCollected == 0 && isNearWater ? "스페이스를 눌러 물을 담으세요." : "";
-
+        guideText.text = waterCollected == 0 && isNearWater
+            ? "Z 키를 눌러 물을 담으세요."
+            : isNearFlame && waterCollected > 0
+                ? "X 키를 눌러 물을 뿌리세요."
+                : isNearFlame && waterCollected == 0
+                    ? "물을 담아 오세요!!!"
+                    : "";
+        
         // 모은 물이 있으면 먼저 쓴다.
-        if (Input.GetKeyDown(KeyCode.Space) && waterCollected > 0)
+        if (Input.GetKeyDown(KeyCode.X) && waterCollected > 0)
         {
             waterCollected--;
             bucketCount.SpendWaterBucket();
             Instantiate(waterSpillPrefab, transform.position, Quaternion.identity);
         }
         // 쓸 물이 없다면 물 근처에서는 물을 담는다.
-        else if (isNearWater && Input.GetKeyDown(KeyCode.Space))
+        else if (isNearWater && Input.GetKeyDown(KeyCode.Z))
         {
             if (waterCollected < waterCapacity)
             {

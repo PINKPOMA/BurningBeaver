@@ -16642,3 +16642,4 @@ MonoBehaviour:
   enhanceFlame:
     serializedVersion: 2
     m_Bits: 0
+  playerController: {fileID: 684248660}

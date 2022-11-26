@@ -19,6 +19,8 @@ public class SetTileMap : MonoBehaviour
   [SerializeField]
   LayerMask enhanceFlame;
 
+  [SerializeField] private PlayerController playerController;
+
   private void Start()
   {
     tilePos.x = (int)transform.position.x;
@@ -44,6 +46,11 @@ public class SetTileMap : MonoBehaviour
 
   private IEnumerator SpreadFlame()
   {
+    if (playerController.IsDead)
+    {
+      yield break;
+    }
+    
     yield return new WaitForSeconds(spreadDelay);
     if(Random.Range(0,2) == 0)
       tilePos.x += ReturnAddPosX();

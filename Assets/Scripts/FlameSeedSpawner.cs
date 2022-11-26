@@ -13,6 +13,8 @@ public class FlameSeedSpawner : MonoBehaviour
     [SerializeField]private float yMin;
     [SerializeField]private float xMax;
     [SerializeField]private float yMax;
+    [SerializeField] private PlayerController playerController;
+    
     private void Start()
     {
         RandomPos();
@@ -21,10 +23,13 @@ public class FlameSeedSpawner : MonoBehaviour
 
     IEnumerator SeedSpawn()
     {
-        Instantiate(flameSeed, playerPos, Quaternion.identity);
-        yield return new WaitForSeconds(15f);
-        RandomPos();
-        StartCoroutine(SeedSpawn());
+        if (!playerController.IsDead)
+        {
+            Instantiate(flameSeed, playerPos, Quaternion.identity);
+            yield return new WaitForSeconds(15f);
+            RandomPos();
+            StartCoroutine(SeedSpawn());
+        }
     }
 
     void RandomPos()
