@@ -14,9 +14,12 @@ public class SetTileMap : MonoBehaviour
   [SerializeField]private float xMax;
   [SerializeField]private float yMax;
 
+  [SerializeField]
+  LayerMask noFlame;
+
   private void Start()
   { 
-    var newTileMap = Instantiate(fireTileMap, Vector3.zero, Quaternion.identity);
+    Instantiate(fireTileMap, Vector3.zero, Quaternion.identity);
     StartCoroutine(SpreadFrame());
     StartCoroutine(WeightedValue());
   }
@@ -37,7 +40,12 @@ public class SetTileMap : MonoBehaviour
       tilePos.x += ReturnAddPosX();
     else
       tilePos.y += ReturnAddPosY();
-    Instantiate(fireTileMap, tilePos, Quaternion.identity);
+
+    if (!Physics2D.OverlapCircle((Vector3)tilePos, 0.2f, noFlame))
+    {
+      Instantiate(fireTileMap, tilePos, Quaternion.identity);
+    }
+
     StartCoroutine(SpreadFrame());
   }
 
