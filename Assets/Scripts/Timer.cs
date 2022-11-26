@@ -14,7 +14,7 @@ public class Timer : MonoBehaviour
  
     void Update()
     {
-        if (_slTimer.value < 300f)
+        if (_slTimer.value < 180f)
         {
             _slTimer.value += Time.deltaTime;
         }
