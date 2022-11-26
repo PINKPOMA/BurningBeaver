@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isDead)
         {
+            SoundManager.Instance.Play(SoundManager.Instance.dieSound);
             guideText.text = "";
             return;
         }
@@ -176,6 +177,7 @@ public class PlayerController : MonoBehaviour
                     {
                         waterCollected++;
                         bucketCount.FillWaterBucket();
+                        SoundManager.Instance.Play(SoundManager.Instance.scoopOutWaterSound);
                         sysMsg.Create("물을 담았습니다.");
                         workGauge.gameObject.SetActive(false);
                     });
@@ -187,6 +189,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                SoundManager.Instance.Play(SoundManager.Instance.scoopOutWaterSound);
                 sysMsg.Create("더 담을 수 없습니다.");
             }
         }

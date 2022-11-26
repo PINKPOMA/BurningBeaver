@@ -16,11 +16,13 @@ public class Title : MonoBehaviour
 
     public void OnStartGame()
     {
+        SoundManager.Instance.Play(SoundManager.Instance.buttonClickSound);
         SceneManager.LoadScene("InGame");
     }
 
     public void OnCredits()
     {
+        SoundManager.Instance.Play(SoundManager.Instance.buttonClickSound);
         credits.gameObject.SetActive(true);
         credits.transform.GetChild(0).DOPunchScale(Vector3.one / 5, 0.25f);
     }

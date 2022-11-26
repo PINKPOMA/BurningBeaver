@@ -18,6 +18,7 @@ public class OilCask : MonoBehaviour
             Instantiate(maxFlameTilemap, new Vector3Int((int)transform.position.x + (j - 2), (int)transform.position.y + (i-2)),Quaternion.identity);
          }
       }
+      SoundManager.Instance.Play(SoundManager.Instance.explosionSound);
       gameObject.GetComponent<Tilemap>().SetTile(new (0,0),null);
    }
 }
