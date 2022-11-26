@@ -5,41 +5,42 @@ using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] BucketCount bucketCount;
-    [SerializeField] float moveSpeed = 5.0f;
-    [SerializeField] Transform movePoint;
-    [SerializeField] LayerMask whatStopsMovement;
-    [SerializeField] LayerMask water;
-    [SerializeField] LayerMask flame;
-    [SerializeField] LayerMask item;
-    [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] int waterCollected;
-    [SerializeField] int waterCapacity = 1;
-    [SerializeField] TextMeshProUGUI guideText;
-    [SerializeField] SystemMessage sysMsg;
-    [SerializeField] GameObject waterSpillPrefab;
-    [SerializeField] Sprite sideBeaverSprite;
-    [SerializeField] Sprite sideFullBeaverSprite;
-    [SerializeField] Sprite topBeaverSprite;
-    [SerializeField] Sprite topFullBeaverSprite;
-    [SerializeField] HpGauge hpGauge;
-    [SerializeField] bool isDead;
-    [SerializeField] GameOver gameOver;
-    [SerializeField] float damagePerSec = 0.2f;
-    [SerializeField] Tilemap itemTilemap;
+    [SerializeField] private BucketCount bucketCount;
+    [SerializeField] private float moveSpeed = 5.0f;
+    [SerializeField] private Transform movePoint;
+    [SerializeField] private LayerMask whatStopsMovement;
+    [SerializeField] private LayerMask water;
+    [SerializeField] private LayerMask flame;
+    [SerializeField] private LayerMask item;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private int waterCollected;
+    [SerializeField] private int waterCapacity = 1;
+    [SerializeField] private TextMeshProUGUI guideText;
+    [SerializeField] private SystemMessage sysMsg;
+    [SerializeField] private GameObject waterSpillPrefab;
+    [SerializeField] private Sprite sideBeaverSprite;
+    [SerializeField] private Sprite sideFullBeaverSprite;
+    [SerializeField] private Sprite topBeaverSprite;
+    [SerializeField] private Sprite topFullBeaverSprite;
+    [SerializeField] private HpGauge hpGauge;
+    [SerializeField] private bool isDead;
+    [SerializeField] private GameOver gameOver;
+    [SerializeField] private float damagePerSec = 0.2f;
+    [SerializeField] private Tilemap itemTilemap;
+    [SerializeField] private WorkGauge workGauge;
 
-    const float CheckOverlapRadius = 0.2f;
+    private const float CheckOverlapRadius = 0.2f;
 
     public bool IsDead => isDead;
 
-    void Start()
+    private void Start()
     {
         movePoint.parent = null;
         hpGauge.FillAmount = 0.5f;
         bucketCount.Init(waterCapacity);
     }
 
-    static readonly Vector2[] Dirs =
+    private static readonly Vector2[] Dirs =
     {
         Vector2.right,
         Vector2.left,
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour
         Vector2.down
     };
 
-    void Update()
+    private void Update()
     {
         if (isDead)
         {
@@ -57,10 +58,21 @@ public class PlayerController : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
 
+        var moved = false;
         if (Vector3.Distance(transform.position, movePoint.position) <= 0.05f)
         {
-            UpdateMovement(Input.GetAxisRaw("Horizontal"), Vector2.right);
-            UpdateMovement(Input.GetAxisRaw("Vertical"), Vector2.up);
+            moved |= UpdateMovement(Input.GetAxisRaw("Horizontal"), Vector2.right);
+            moved |= UpdateMovement(Input.GetAxisRaw("Vertical"), Vector2.up);
+        }
+
+        // 이동하면 하던 작업 취소
+        if (moved)
+        {
+            if (workGauge.gameObject.activeSelf)
+            {
+                sysMsg.Create("작업이 취소됐습니다.");
+            }
+            workGauge.gameObject.SetActive(false);
         }
 
         var isNearWater = false;
@@ -144,9 +156,21 @@ public class PlayerController : MonoBehaviour
         {
             if (waterCollected < waterCapacity)
             {
-                waterCollected++;
-                bucketCount.FillWaterBucket();
-                sysMsg.Create("물을 담았습니다.");
+                if (!workGauge.gameObject.activeSelf)
+                {
+                    workGauge.gameObject.SetActive(true);
+                    workGauge.StartWork(1.0f, () =>
+                    {
+                        waterCollected++;
+                        bucketCount.FillWaterBucket();
+                        sysMsg.Create("물을 담았습니다.");
+                        workGauge.gameObject.SetActive(false);
+                    });
+                }
+                else
+                {
+                    sysMsg.Create("작업 중입니다.");    
+                }
             }
             else
             {
@@ -167,18 +191,19 @@ public class PlayerController : MonoBehaviour
                 spriteRenderer.transform.DOLocalRotate(new Vector3(0, 0, 90), 0.25f);
                 spriteRenderer.transform.DOBlendableLocalMoveBy(Vector2.down / 4, 0.25f);
                 gameOver.Create();
+                workGauge.gameObject.SetActive(false);
             }
 
             hpGauge.Shake();
         }
     }
 
-    void UpdateMovement(float axisValue, Vector3 axis)
+    private bool UpdateMovement(float axisValue, Vector3 axis)
     {
         // ReSharper disable once CompareOfFloatsByEqualityOperator
         if (Mathf.Abs(axisValue) != 1.0f)
         {
-            return;
+            return false;
         }
 
         var delta = axisValue * axis;
@@ -211,6 +236,10 @@ public class PlayerController : MonoBehaviour
                     _ => spriteRenderer.flipY
                 };
             }
+
+            return true;
         }
+
+        return false;
     }
 }
