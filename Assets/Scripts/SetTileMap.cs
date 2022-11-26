@@ -13,13 +13,6 @@ public class SetTileMap : MonoBehaviour
   [SerializeField]private float yMin;
   [SerializeField]private float xMax;
   [SerializeField]private float yMax;
-  
-  [Header("World edge block")]
-  [SerializeField]private float waterXMin;
-  [SerializeField]private float waterYMin;
-  [SerializeField]private float waterXMax;
-  [SerializeField]private float waterYMax;
-
 
   private void Start()
   { 
@@ -52,22 +45,40 @@ public class SetTileMap : MonoBehaviour
   {
     if (Random.Range(0, 2) == 0)
     {
-      return tilePos.x - 1 < xMin ? 1 : -1;
+      if(tilePos.x - 1 > xMin)
+        return -1;
+      else
+      {
+        return 1;
+      }
     }
     else
     {
-      return tilePos.x + 1 > xMax ? -1 : 1;
+      if(tilePos.x + 1 < xMax)
+        return 1;
+      else
+      {
+        return -1;
+      } 
     }
   }
   private int ReturnAddPosY()
   {
     if (Random.Range(0, 2) == 0)
     {
-      return tilePos.y - 1 < yMin ? 1 : -1;
+      if(tilePos.y - 1 > yMin)
+        return -1;
+      else
+      {
+        return 1;
+      }
     }
     else
     {
-      return tilePos.y + 1 > yMax ?  -1 : 1;
+      if (tilePos.y + 1 < yMax)
+        return 1;
+      else
+        return -1;
     }
   }
 }

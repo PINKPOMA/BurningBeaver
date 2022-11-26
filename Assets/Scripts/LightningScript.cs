@@ -20,10 +20,17 @@ public class LightningScript : MonoBehaviour
          StartCoroutine(Stoplightning());
       }
    }
-
    IEnumerator Stoplightning()
    {
       yield return new WaitForSeconds(1.11f);
       Destroy(lightning);
+   }
+
+   private void OnTriggerEnter2D(Collider2D col)
+   {
+      if (col.CompareTag("Water"))
+      {
+         Destroy(gameObject);
+      }
    }
 }
