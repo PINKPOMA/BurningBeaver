@@ -29,7 +29,7 @@ public class Shop : MonoBehaviour
       var user = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
       if (user.GetMoney >= bukketPrise)
       {
-         if(5 <  user.GetwaterCapacity) return;
+         if(5 <=  user.GetwaterCapacity) return;
          
          user.SetMoney(-bukketPrise);
          user.SetwaterCapacity(1);

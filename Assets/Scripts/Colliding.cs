@@ -22,7 +22,7 @@ public class Colliding : MonoBehaviour
         {
             //Debug.Log($"gameObject: {col.gameObject.name} is detected!");
             var user = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-            user.SetMoney(10);
+            user.SetMoney(5);
             Destroy(col.gameObject);
         }
     }
