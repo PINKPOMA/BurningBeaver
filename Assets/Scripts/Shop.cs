@@ -1,6 +1,4 @@
-using System;
 using TMPro;
-using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEngine;
 
 public class Shop : MonoBehaviour

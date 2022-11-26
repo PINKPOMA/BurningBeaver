@@ -26,4 +26,10 @@ public class Title : MonoBehaviour
         credits.gameObject.SetActive(true);
         credits.transform.GetChild(0).DOPunchScale(Vector3.one / 5, 0.25f);
     }
+
+    public void OnExit()
+    {
+        SoundManager.Instance.Play(SoundManager.Instance.buttonClickSound);
+        Application.Quit();
+    }
 }
