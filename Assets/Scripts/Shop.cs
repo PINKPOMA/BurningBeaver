@@ -35,6 +35,7 @@ public class Shop : MonoBehaviour
          user.SetwaterCapacity(1);
          bukketPrise += bukketPrise / 10;
          bukketPriseText.text = bukketPrise.ToString();
+         userMoney.text = user.GetMoney.ToString();
       }
       else
       {
@@ -50,6 +51,7 @@ public class Shop : MonoBehaviour
          user.SetMoveSpeed(1);
          moveSpeedPrise += moveSpeedPrise / 10;
          moveSpeedPriseText.text = moveSpeedPrise.ToString();
+         userMoney.text = user.GetMoney.ToString();
       }
       else
       {
@@ -63,12 +65,19 @@ public class Shop : MonoBehaviour
       {
          user.SetMoney(-waterPrise);
          user.SetFillingSpeed(0.1f);
-         bukketPrise += bukketPrise / 10;
-         bukketPriseText.text = bukketPrise.ToString();
+         waterPrise += waterPrise / 10;
+         waterPriseText.text = waterPrise.ToString();
+         userMoney.text = user.GetMoney.ToString();
       }
       else
       {
          Debug.Log("돈 부족");
       }
+   }
+
+   public void Exit()
+   {
+      Time.timeScale = 1;
+      gameObject.SetActive(false);
    }
 }

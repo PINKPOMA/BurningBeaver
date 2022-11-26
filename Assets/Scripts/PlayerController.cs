@@ -42,7 +42,13 @@ public class PlayerController : MonoBehaviour
     public virtual int  GetwaterCapacity =>  waterCapacity;
     public  void  SetMoveSpeed(float num) =>  moveSpeed += num;
     public virtual float  GetMoveSpeed =>  moveSpeed;
-    public  void  SetFillingSpeed(float num) =>  fillingSpeed -= num;
+
+    public void SetFillingSpeed(float num)
+    {
+        fillingSpeed -= num;
+        if (fillingSpeed <= 0.2)
+            fillingSpeed = 0.2f;
+    }
     public virtual float  GetFillingSpeed =>  fillingSpeed;
 
 

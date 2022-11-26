@@ -8,6 +8,7 @@ public class Title : MonoBehaviour
     [SerializeField] private Color c2;
     [SerializeField] private Camera cam;
     [SerializeField] private GameObject credits;
+    [SerializeField] private GameObject intro;
     
     void Update()
     {
@@ -16,8 +17,8 @@ public class Title : MonoBehaviour
 
     public void OnStartGame()
     {
-        SoundManager.Instance.Play(SoundManager.Instance.buttonClickSound);
-        SceneManager.LoadScene("InGame");
+    	SoundManager.Instance.Play(SoundManager.Instance.buttonClickSound);
+        intro.gameObject.SetActive(true);
     }
 
     public void OnCredits()
