@@ -21,6 +21,8 @@ public class Colliding : MonoBehaviour
         if (col.CompareTag("Flame"))
         {
             //Debug.Log($"gameObject: {col.gameObject.name} is detected!");
+            var user = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+            user.SetMoney(10);
             Destroy(col.gameObject);
         }
     }
