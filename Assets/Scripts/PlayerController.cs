@@ -23,7 +23,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] HpGauge hpGauge;
     [SerializeField] bool isDead;
     [SerializeField] GameOver gameOver;
-    
+    [SerializeField] float damagePerSec = 0.2f;
+
+    const float CheckOverlapRadius = 0.2f;
+
     void Start()
     {
         movePoint.parent = null;
@@ -44,7 +47,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        
+
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, movePoint.position) <= 0.05f)
@@ -56,13 +59,13 @@ public class PlayerController : MonoBehaviour
         var isNearWater = false;
         foreach (var dir in Dirs)
         {
-            if (Physics2D.OverlapCircle((Vector2)movePoint.position + dir, 0.2f, water))
+            if (Physics2D.OverlapCircle((Vector2)movePoint.position + dir, CheckOverlapRadius, water))
             {
                 isNearWater = true;
                 break;
             }
         }
-        
+
         if (waterCollected > 0)
         {
             if (spriteRenderer.sprite == sideBeaverSprite)
@@ -88,9 +91,18 @@ public class PlayerController : MonoBehaviour
 
         //spriteRenderer.color = waterCollected > 0 ? Color.blue : isNearWater ? Color.cyan : Color.white;
 
-        guideText.text = waterCollected < waterCapacity && isNearWater ? "스페이스를 눌러 물을 담으세요." : "";
+        // 물을 하나도 안모은 상태에서 물 근처에 있다면 물을 담는 선택지 밖에 없다.
+        guideText.text = waterCollected == 0 && isNearWater ? "스페이스를 눌러 물을 담으세요." : "";
 
-        if (isNearWater && Input.GetKeyDown(KeyCode.Space))
+        // 모은 물이 있으면 먼저 쓴다.
+        if (Input.GetKeyDown(KeyCode.Space) && waterCollected > 0)
+        {
+            waterCollected--;
+            bucketCount.ChangeWaterBucketCount(waterCollected);
+            Instantiate(waterSpillPrefab, transform.position, Quaternion.identity);
+        }
+        // 쓸 물이 없다면 물 근처에서는 물을 담는다.
+        else if (isNearWater && Input.GetKeyDown(KeyCode.Space))
         {
             if (waterCollected < waterCapacity)
             {
@@ -103,17 +115,11 @@ public class PlayerController : MonoBehaviour
                 sysMsg.Create("더 담을 수 없습니다.");
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Space) && waterCollected > 0)
+
+        // 불에 겹쳐지면 데미지를 받는다.
+        if (Physics2D.OverlapCircle(movePoint.position, CheckOverlapRadius, flame))
         {
-            waterCollected--;
-            bucketCount.ChangeWaterBucketCount(waterCollected);
-            Instantiate(waterSpillPrefab, transform.position, Quaternion.identity);
-        }
-        
-        
-        if (Physics2D.OverlapCircle(movePoint.position, 0.2f, flame))
-        {
-            hpGauge.FillAmount -= 0.2f * Time.deltaTime;
+            hpGauge.FillAmount -= damagePerSec * Time.deltaTime;
             if (hpGauge.FillAmount <= 0)
             {
                 isDead = true;
@@ -124,6 +130,7 @@ public class PlayerController : MonoBehaviour
                 spriteRenderer.transform.DOBlendableLocalMoveBy(Vector2.down / 4, 0.25f);
                 gameOver.Create();
             }
+
             hpGauge.Shake();
         }
     }
@@ -137,7 +144,7 @@ public class PlayerController : MonoBehaviour
         }
 
         var delta = axisValue * axis;
-        if (!Physics2D.OverlapCircle(movePoint.position + delta, 0.2f, whatStopsMovement))
+        if (!Physics2D.OverlapCircle(movePoint.position + delta, CheckOverlapRadius, whatStopsMovement))
         {
             movePoint.position += delta;
 
