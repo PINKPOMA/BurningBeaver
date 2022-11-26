@@ -632,6 +632,7 @@ MonoBehaviour:
   hpGauge: {fileID: 1528608645}
   isDead: 0
   gameOver: {fileID: 684248662}
+  damagePerSec: 0.2
 --- !u!4 &684248661
 Transform:
   m_ObjectHideFlags: 0
@@ -16526,7 +16527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireTileMap: {fileID: 2958329026369829304, guid: af0911439fe7ac744a5fb12e68a42d9d, type: 3}
   tilePos: {x: 0, y: 0, z: 0}
-  spreadDelay: 0
+  spreadDelay: 1
   xMin: -9
   yMin: -23
   xMax: 31
