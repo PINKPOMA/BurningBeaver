@@ -16,6 +16,8 @@ public class SetTileMap : MonoBehaviour
 
   [SerializeField]
   LayerMask noFlame;
+  [SerializeField]
+  LayerMask enhanceFlame;
 
   private void Start()
   {
@@ -23,13 +25,14 @@ public class SetTileMap : MonoBehaviour
     tilePos.y = (int)transform.position.y;
     StartCoroutine(SpreadFlame());
     StartCoroutine(WeightedValue());
-  } 
-
-  float ReturnAddPlayerPos()
-  {
-    return Random.Range(0, 2) == 0 ? Random.Range(-3f, -5f) : Random.Range(3f, 5f);
+    StartCoroutine(Dead());
   }
 
+  IEnumerator Dead()
+  {
+    yield return new WaitForSeconds(35f);
+    Destroy(gameObject);
+  }
   private IEnumerator WeightedValue()
   {
     for (int i = 0; i < 6; i++)
@@ -46,12 +49,16 @@ public class SetTileMap : MonoBehaviour
       tilePos.x += ReturnAddPosX();
     else
       tilePos.y += ReturnAddPosY();
-
-    if (!Physics2D.OverlapCircle((Vector3)tilePos, 0.2f, noFlame))
+    if (Physics2D.OverlapCircle((Vector3)tilePos, 0.2f, enhanceFlame))
+    {
+      var flameCollision = Physics2D.OverlapCircle((Vector3)tilePos, 0.2f, enhanceFlame);
+      flameCollision.GetComponent<LightningScript>().enhanceFlameTile();
+    }
+    else if (!Physics2D.OverlapCircle((Vector3)tilePos, 0.2f, noFlame))
     {
       Instantiate(fireTileMap, tilePos, Quaternion.identity);
     }
-
+    
     StartCoroutine(SpreadFlame());
   }
 

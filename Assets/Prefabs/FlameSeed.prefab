@@ -47,7 +47,6 @@ MonoBehaviour:
   fireTileMap: {fileID: 2958329026369829304, guid: af0911439fe7ac744a5fb12e68a42d9d, type: 3}
   tilePos: {x: 0, y: 0, z: 0}
   spreadDelay: 2
-  playerPos: {x: 0, y: 0, z: 0}
   xMin: -9
   yMin: -23
   xMax: 31
@@ -55,3 +54,6 @@ MonoBehaviour:
   noFlame:
     serializedVersion: 2
     m_Bits: 64
+  enhanceFlame:
+    serializedVersion: 2
+    m_Bits: 128
