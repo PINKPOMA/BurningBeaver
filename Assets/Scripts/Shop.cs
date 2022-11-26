@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -31,7 +28,7 @@ public class Shop : MonoBehaviour
          if(5 <=  user.GetwaterCapacity) return;
          
          user.SetMoney(-bucketPrice);
-         user.SetwaterCapacity(1);
+         user.SetWaterCapacity(1);
          bucketPrice += bucketPrice / 10;
          bucketPriceText.text = bucketPrice+"G";
          userMoney.text = "Gold:" + user.GetMoney;

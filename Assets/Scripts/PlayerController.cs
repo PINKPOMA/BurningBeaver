@@ -30,25 +30,25 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Tilemap itemTilemap;
     [SerializeField] private WorkGauge workGauge;
     [SerializeField] private TextMeshProUGUI flameProgressText;
-    
+
     private int _money;
 
     private const float CheckOverlapRadius = 0.2f;
 
     public bool IsDead => isDead;
-    
-    public virtual int  GetMoney =>  _money;
-    public  void  SetMoney(int won) =>  _money += won;
 
-    public void SetwaterCapacity(int num)
+    public int GetMoney => _money;
+    public void SetMoney(int won) => _money += won;
+
+    public void SetWaterCapacity(int num)
     {
         waterCapacity += num;
         bucketCount.Init(waterCapacity);
     }
 
-    public virtual int  GetwaterCapacity =>  waterCapacity;
-    public  void  SetMoveSpeed(float num) =>  moveSpeed += num;
-    public virtual float  GetMoveSpeed =>  moveSpeed;
+    public int GetwaterCapacity => waterCapacity;
+    public void SetMoveSpeed(float num) => moveSpeed += num;
+    public float GetMoveSpeed => moveSpeed;
 
     public void SetFillingSpeed(float num)
     {
@@ -56,7 +56,8 @@ public class PlayerController : MonoBehaviour
         if (fillingSpeed <= 0.2)
             fillingSpeed = 0.2f;
     }
-    public virtual float  GetFillingSpeed =>  fillingSpeed;
+
+    public float GetFillingSpeed => fillingSpeed;
 
 
     private void Start()
@@ -91,7 +92,7 @@ public class PlayerController : MonoBehaviour
         {
             CommitGameOver(GameOverReason.FlameProgress);
         }
-        
+
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
 
         var moved = false;
@@ -108,6 +109,7 @@ public class PlayerController : MonoBehaviour
             {
                 sysMsg.Create("작업이 취소됐습니다.");
             }
+
             workGauge.gameObject.SetActive(false);
         }
 
@@ -179,7 +181,7 @@ public class PlayerController : MonoBehaviour
                     : isNearFlame && waterCollected == 0
                         ? "물을 담아 오세요!!!"
                         : "";
-        
+
         if (Input.GetKeyDown(KeyCode.X) && waterCollected > 0)
         {
             waterCollected--;
@@ -204,7 +206,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    sysMsg.Create("작업 중입니다.");    
+                    sysMsg.Create("작업 중입니다.");
                 }
             }
             else
