@@ -44,9 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579080c1af5a1234d817b3515fe8ecf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPos: {x: 0, y: 0, z: 0}
   oilCaskTilemap: {fileID: 2142889625608429529, guid: ee7887806bee72f4e9ca78ab987104e7, type: 3}
-  xMin: -9
-  yMin: -23
-  xMax: 31
-  yMax: 11
+  oilCaskSpawnPos:
+  - {x: -4, y: 6, z: 0}
+  - {x: 1, y: 4, z: 0}
+  - {x: 8, y: 3, z: 0}
+  - {x: 13, y: 7, z: 0}
+  - {x: 18, y: 3, z: 0}
+  - {x: 23, y: 6, z: 0}
+  - {x: 28, y: 2, z: 0}
+  - {x: 23, y: -4, z: 0}
+  - {x: 17, y: -9, z: 0}
+  - {x: -6, y: -4, z: 0}
+  - {x: -7, y: -9, z: 0}
+  - {x: -5, y: -15, z: 0}
+  - {x: 4, y: -20, z: 0}
+  - {x: 15, y: -18, z: 0}
+  - {x: 21, y: -14, z: 0}

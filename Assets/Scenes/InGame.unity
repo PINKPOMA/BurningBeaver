@@ -459,7 +459,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 11
   m_Sprite: {fileID: -152984019, guid: 122bb6c0759b003469a21edcc9d751a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1583,6 +1583,7 @@ Transform:
   - {fileID: 806006275}
   - {fileID: 34542733}
   - {fileID: 1926022802}
+  - {fileID: 8300682745323086317}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1663,6 +1664,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98e092e24ac404ca882aa1a231358adc, type: 3}
+--- !u!1001 &3104153079871783594
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2129250278}
+    m_Modifications:
+    - target: {fileID: 6351720609369760580, guid: 86aceaeae74474f3e995315aed0d38c9, type: 3}
+      propertyPath: m_Name
+      value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 6351720609369760583, guid: 86aceaeae74474f3e995315aed0d38c9, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6351720609369760583, guid: 86aceaeae74474f3e995315aed0d38c9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6351720609369760583, guid: 86aceaeae74474f3e995315aed0d38c9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6351720609369760583, guid: 86aceaeae74474f3e995315aed0d38c9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6351720609369760583, guid: 86aceaeae74474f3e995315aed0d38c9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6351720609369760583, guid: 86aceaeae74474f3e995315aed0d38c9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6351720609369760583, guid: 86aceaeae74474f3e995315aed0d38c9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6351720609369760583, guid: 86aceaeae74474f3e995315aed0d38c9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6351720609369760583, guid: 86aceaeae74474f3e995315aed0d38c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6351720609369760583, guid: 86aceaeae74474f3e995315aed0d38c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6351720609369760583, guid: 86aceaeae74474f3e995315aed0d38c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 86aceaeae74474f3e995315aed0d38c9, type: 3}
 --- !u!1001 &3449238627563927491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1832,130 +1890,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: OilCaskSpawner
       objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.size
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[0].x
-      value: -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[0].y
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[1].x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[1].y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[2].x
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[2].y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[3].x
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[3].y
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[4].x
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[4].y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[5].x
-      value: 23
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[5].y
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[6].x
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[6].y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[7].x
-      value: 23
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[7].y
-      value: -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[8].x
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[8].y
-      value: -9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[9].x
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[9].y
-      value: -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[10].x
-      value: -7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[10].y
-      value: -9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[11].x
-      value: -5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[11].y
-      value: -15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[12].x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[12].y
-      value: -20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[13].x
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[13].y
-      value: -18
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[14].x
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
-      propertyPath: oilCaskSpawnPos.Array.data[14].y
-      value: -14
-      objectReference: {fileID: 0}
     - target: {fileID: 5706993393377713583, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2059,6 +1993,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd8147fb2d5b14290b3202da02a9d87a, type: 3}
+--- !u!4 &8300682745323086317 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6351720609369760583, guid: 86aceaeae74474f3e995315aed0d38c9, type: 3}
+  m_PrefabInstance: {fileID: 3104153079871783594}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9021423789538914094
 PrefabInstance:
   m_ObjectHideFlags: 0
