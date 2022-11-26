@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask whatStopsMovement;
     [SerializeField] LayerMask water;
     [SerializeField] LayerMask flame;
+    [SerializeField] LayerMask item;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] int waterCollected;
     [SerializeField] int waterCapacity = 1;
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool isDead;
     [SerializeField] GameOver gameOver;
     [SerializeField] float damagePerSec = 0.2f;
+    [SerializeField] Tilemap itemTilemap;
 
     const float CheckOverlapRadius = 0.2f;
 
@@ -63,6 +66,18 @@ public class PlayerController : MonoBehaviour
             {
                 isNearWater = true;
                 break;
+            }
+        }
+
+        if (Physics2D.OverlapCircle(movePoint.position, CheckOverlapRadius, item))
+        {
+            var itemCell = itemTilemap.WorldToCell(movePoint.position);
+            var itemTile = itemTilemap.GetTile(itemCell);
+            if (itemTile)
+            {
+                Debug.Log($"item at {itemCell}");
+                itemTilemap.SetTile(itemCell, null);
+                hpGauge.FillAmount += 0.2f;
             }
         }
 
