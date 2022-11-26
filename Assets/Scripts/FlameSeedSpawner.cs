@@ -14,8 +14,9 @@ public class FlameSeedSpawner : MonoBehaviour
     [SerializeField]private float yMax;
     [SerializeField] private PlayerController playerController;
     
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitForSeconds(10.0f);
         RandomPos();
         StartCoroutine(SeedSpawn());
         StartCoroutine(EndReady());

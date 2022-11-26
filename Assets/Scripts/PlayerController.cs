@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System.Collections;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -60,11 +61,19 @@ public class PlayerController : MonoBehaviour
     public float GetFillingSpeed => fillingSpeed;
 
 
-    private void Start()
+    private IEnumerator Start()
     {
         movePoint.parent = null;
         hpGauge.FillAmount = 0.5f;
         bucketCount.Init(waterCapacity);
+        
+        for (var i = 10; i > 0; i--)
+        {
+            sysMsg.Create($"{i}초 뒤 산불이 시작됩니다.");
+            yield return new WaitForSeconds(1.0f);
+        }
+        
+        sysMsg.Create($"산불이 났습니다~~~");
     }
 
     private static readonly Vector2[] Dirs =
