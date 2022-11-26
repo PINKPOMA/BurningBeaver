@@ -10,7 +10,7 @@ public class Shop : MonoBehaviour
    [SerializeField] private TextMeshProUGUI bukketPriseText;
    [SerializeField] private TextMeshProUGUI moveSpeedPriseText;
    [SerializeField] private TextMeshProUGUI waterPriseText;
-   [SerializeField] private int bukketPrise;
+   [SerializeField] private int bucketPrise;
    [SerializeField] private int maxBukket;
    [SerializeField] private int moveSpeedPrise;
    [SerializeField] private int waterPrise;
@@ -18,8 +18,8 @@ public class Shop : MonoBehaviour
    private void Start()
    {
       var user = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-      userMoney.text = user.GetMoney.ToString();
-      bukketPriseText.text = bukketPrise.ToString();
+      userMoney.text = "Gold: " + user.GetMoney;
+      bukketPriseText.text = bucketPrise.ToString();
       moveSpeedPriseText.text = moveSpeedPrise.ToString();
       waterPriseText.text = waterPrise.ToString();
    }
@@ -27,14 +27,14 @@ public class Shop : MonoBehaviour
    public void BuyBucket()
    {
       var user = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-      if (user.GetMoney >= bukketPrise)
+      if (user.GetMoney >= bucketPrise)
       {
          if(5 <=  user.GetwaterCapacity) return;
          
-         user.SetMoney(-bukketPrise);
+         user.SetMoney(-bucketPrise);
          user.SetwaterCapacity(1);
-         bukketPrise += bukketPrise / 10;
-         bukketPriseText.text = bukketPrise.ToString();
+         bucketPrise += bucketPrise / 10;
+         bukketPriseText.text = bucketPrise.ToString();
          userMoney.text = user.GetMoney.ToString();
       }
       else

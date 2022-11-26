@@ -169,15 +169,13 @@ public class PlayerController : MonoBehaviour
                     : isNearFlame && waterCollected == 0
                         ? "물을 담아 오세요!!!"
                         : "";
-
-        // 모은 물이 있으면 먼저 쓴다.
+        
         if (Input.GetKeyDown(KeyCode.X) && waterCollected > 0)
         {
             waterCollected--;
             bucketCount.SpendWaterBucket();
             Instantiate(waterSpillPrefab, transform.position, Quaternion.identity);
         }
-        // 쓸 물이 없다면 물 근처에서는 물을 담는다.
         else if (isNearWater && Input.GetKeyDown(KeyCode.Z))
         {
             if (waterCollected < waterCapacity)
