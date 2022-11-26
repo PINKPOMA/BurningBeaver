@@ -11,11 +11,11 @@ public class GameOver : MonoBehaviour
     [SerializeField]
     Canvas canvas;
     
-    public void Create()
+    public void Create(PlayerController.GameOverReason gameOverReason)
     {
         var go = Instantiate(prefab, canvas.transform, false);
 
-        go.GetComponentInChildren<TextMeshProUGUI>().text = "게임 오버!!!";
+        go.GetComponentInChildren<TextMeshProUGUI>().text = gameOverReason == PlayerController.GameOverReason.PlayerDead ? "게임 오버!!!\n김비버 R.I.P." : "게임 오버!!!\n산 R.I.P.";
         
         var btnList = go.GetComponentsInChildren<Button>();
 

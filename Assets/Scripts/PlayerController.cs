@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float fillingSpeed = 1f;
     [SerializeField] private Tilemap itemTilemap;
     [SerializeField] private WorkGauge workGauge;
+    [SerializeField] private TextMeshProUGUI flameProgressText;
     
     private int _money;
 
@@ -82,6 +83,15 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        var flameCount = FindObjectsOfType<LightningScript>().Length;
+        var flameProgress = flameCount / 1.5f;
+        flameProgressText.text = $"{flameProgress:f0}%";
+
+        if (flameProgress > 100.0f)
+        {
+            CommitGameOver(GameOverReason.FlameProgress);
+        }
+        
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
 
         var moved = false;
@@ -210,18 +220,29 @@ public class PlayerController : MonoBehaviour
             hpGauge.FillAmount -= damagePerSec * Time.deltaTime;
             if (hpGauge.FillAmount <= 0)
             {
-                isDead = true;
-                spriteRenderer.sprite = sideBeaverSprite;
-                spriteRenderer.flipX = false;
-                spriteRenderer.flipY = false;
-                spriteRenderer.transform.DOLocalRotate(new Vector3(0, 0, 90), 0.25f);
-                spriteRenderer.transform.DOBlendableLocalMoveBy(Vector2.down / 4, 0.25f);
-                gameOver.Create();
-                workGauge.gameObject.SetActive(false);
+                CommitGameOver(GameOverReason.PlayerDead);
             }
 
             hpGauge.Shake();
         }
+    }
+
+    public enum GameOverReason
+    {
+        PlayerDead,
+        FlameProgress,
+    }
+
+    private void CommitGameOver(GameOverReason reason)
+    {
+        isDead = true;
+        spriteRenderer.sprite = sideBeaverSprite;
+        spriteRenderer.flipX = false;
+        spriteRenderer.flipY = false;
+        spriteRenderer.transform.DOLocalRotate(new Vector3(0, 0, 90), 0.25f);
+        spriteRenderer.transform.DOBlendableLocalMoveBy(Vector2.down / 4, 0.25f);
+        gameOver.Create(reason);
+        workGauge.gameObject.SetActive(false);
     }
 
     private bool UpdateMovement(float axisValue, Vector3 axis)

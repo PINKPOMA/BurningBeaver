@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
+    [SerializeField] private PlayerController playerController;
+    
     Slider _slTimer;
     void Start()
     {
@@ -14,7 +14,12 @@ public class Timer : MonoBehaviour
  
     void Update()
     {
-        if (_slTimer.value < 180f)
+        if (playerController.IsDead)
+        {
+            return;
+        }
+        
+        if (_slTimer.value < _slTimer.maxValue)
         {
             _slTimer.value += Time.deltaTime;
         }
