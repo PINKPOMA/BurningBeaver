@@ -20,7 +20,7 @@ public class Colliding : MonoBehaviour
     {
         if (col.CompareTag("Flame"))
         {
-            Debug.Log($"gameObject: {col.gameObject.name} is detected!");
+            //Debug.Log($"gameObject: {col.gameObject.name} is detected!");
             Destroy(col.gameObject);
         }
     }
