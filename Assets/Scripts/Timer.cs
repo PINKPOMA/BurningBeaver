@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
@@ -19,7 +20,7 @@ public class Timer : MonoBehaviour
         }
         else
         {
-            Debug.Log("엔딩");
+            SceneManager.LoadScene("EndingScene");
         }
     }
 }
