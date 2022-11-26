@@ -20,8 +20,14 @@ public class FlameSeedSpawner : MonoBehaviour
     {
         RandomPos();
         StartCoroutine(SeedSpawn());
+        StartCoroutine(EndReady());
     }
 
+    IEnumerator EndReady()
+    {
+        yield return new WaitForSeconds(250f);
+        Destroy(gameObject.GetComponent<FlameSeedSpawner>());
+    }
     IEnumerator SeedSpawn()
     {
         if (!playerController.IsDead)
