@@ -35,7 +35,7 @@ public class LightningScript : MonoBehaviour
    public void enhanceFlameTile()
    {
       nowFlameTile++;
-      if (nowFlameTile < 3)
+      if (nowFlameTile < 3 && _flameTilemap)
          _flameTilemap.SwapTile(flameTileBase[nowFlameTile - 1],flameTileBase[nowFlameTile]);
    }
 
