@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameOver gameOver;
     [SerializeField] private float damagePerSec = 0.2f;
     [SerializeField] private float fillingSpeed = 1f;
-     [SerializeField] private Tilemap itemTilemap;
+    [SerializeField] private Tilemap itemTilemap;
     [SerializeField] private WorkGauge workGauge;
     
     private int _money;
