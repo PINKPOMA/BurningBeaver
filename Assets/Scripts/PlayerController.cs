@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public BucketCount bucketCount;
+    
     public float moveSpeed = 5.0f;
     public Transform movePoint;
     public LayerMask whatStopsMovement;
@@ -86,13 +88,14 @@ public class PlayerController : MonoBehaviour
 
         //spriteRenderer.color = waterCollected > 0 ? Color.blue : isNearWater ? Color.cyan : Color.white;
 
-        guideText.text = waterCollected == 0 && isNearWater ? "스페이스를 눌러 물을 담으세요." : "";
+        guideText.text = waterCollected < waterCapacity && isNearWater ? "스페이스를 눌러 물을 담으세요." : "";
 
         if (isNearWater && Input.GetKeyDown(KeyCode.Space))
         {
             if (waterCollected < waterCapacity)
             {
                 waterCollected++;
+                bucketCount.ChangeWaterBucketCount(waterCollected);
                 sysMsg.Create("물을 담았습니다.");
             }
             else
@@ -103,7 +106,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Space) && waterCollected > 0)
         {
             waterCollected--;
-
+            bucketCount.ChangeWaterBucketCount(waterCollected);
             Instantiate(waterSpillPrefab, transform.position, Quaternion.identity);
         }
         
