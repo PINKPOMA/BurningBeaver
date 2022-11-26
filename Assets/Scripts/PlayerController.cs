@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         movePoint.parent = null;
         hpGauge.FillAmount = 0.5f;
+        bucketCount.Init(waterCapacity);
     }
 
     static readonly Vector2[] Dirs =
@@ -113,7 +114,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && waterCollected > 0)
         {
             waterCollected--;
-            bucketCount.ChangeWaterBucketCount(waterCollected);
+            bucketCount.SpendWaterBucket();
             Instantiate(waterSpillPrefab, transform.position, Quaternion.identity);
         }
         // 쓸 물이 없다면 물 근처에서는 물을 담는다.
@@ -122,7 +123,7 @@ public class PlayerController : MonoBehaviour
             if (waterCollected < waterCapacity)
             {
                 waterCollected++;
-                bucketCount.ChangeWaterBucketCount(waterCollected);
+                bucketCount.FillWaterBucket();
                 sysMsg.Create("물을 담았습니다.");
             }
             else
