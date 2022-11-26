@@ -1,16 +1,23 @@
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HpGauge : MonoBehaviour
 {
-    public Image slider;
+    [SerializeField] Image slider;
+    [SerializeField] TextMeshProUGUI title;
+    
     bool isShaking;
-
+    
     public float FillAmount
     {
         get => slider.fillAmount;
-        set => slider.fillAmount = value;
+        set
+        {
+            slider.fillAmount = value;
+            title.color = FillAmount < 0.25f ? Color.red : FillAmount < 0.50f ? Color.yellow : Color.white;
+        }
     }
 
     public void Shake()

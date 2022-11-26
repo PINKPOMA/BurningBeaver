@@ -587,6 +587,7 @@ GameObject:
   m_Component:
   - component: {fileID: 684248661}
   - component: {fileID: 684248660}
+  - component: {fileID: 684248662}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -606,6 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca3134ee95d94660923e58b10b165d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bucketCount: {fileID: 0}
   moveSpeed: 5
   movePoint: {fileID: 449661330}
   whatStopsMovement:
@@ -629,6 +631,7 @@ MonoBehaviour:
   topFullBeaverSprite: {fileID: 1184925715, guid: d2d6646f0580053409942071528fd649, type: 3}
   hpGauge: {fileID: 1528608645}
   isDead: 0
+  gameOver: {fileID: 684248662}
 --- !u!4 &684248661
 Transform:
   m_ObjectHideFlags: 0
@@ -647,6 +650,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &684248662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684248659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3cb7aeedad8d4e0689a661a324c7929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 9054693691697283817, guid: 21357ae178cea4c8e8b4bc7c7cfef87b, type: 3}
+  canvas: {fileID: 1813610550}
 --- !u!1 &719606807
 GameObject:
   m_ObjectHideFlags: 0

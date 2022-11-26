@@ -4,30 +4,30 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public BucketCount bucketCount;
-    
-    public float moveSpeed = 5.0f;
-    public Transform movePoint;
-    public LayerMask whatStopsMovement;
-    public LayerMask water;
-    public LayerMask flame;
-    public SpriteRenderer spriteRenderer;
-    public int waterCollected;
-    public int waterCapacity = 1;
-    public TextMeshProUGUI guideText;
-    public SystemMessage sysMsg;
-    public GameObject waterSpillPrefab;
-    public Sprite sideBeaverSprite;
-    public Sprite sideFullBeaverSprite;
-    public Sprite topBeaverSprite;
-    public Sprite topFullBeaverSprite;
-    public HpGauge hpGauge;
-    public bool isDead;
+    [SerializeField] BucketCount bucketCount;
+    [SerializeField] float moveSpeed = 5.0f;
+    [SerializeField] Transform movePoint;
+    [SerializeField] LayerMask whatStopsMovement;
+    [SerializeField] LayerMask water;
+    [SerializeField] LayerMask flame;
+    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] int waterCollected;
+    [SerializeField] int waterCapacity = 1;
+    [SerializeField] TextMeshProUGUI guideText;
+    [SerializeField] SystemMessage sysMsg;
+    [SerializeField] GameObject waterSpillPrefab;
+    [SerializeField] Sprite sideBeaverSprite;
+    [SerializeField] Sprite sideFullBeaverSprite;
+    [SerializeField] Sprite topBeaverSprite;
+    [SerializeField] Sprite topFullBeaverSprite;
+    [SerializeField] HpGauge hpGauge;
+    [SerializeField] bool isDead;
+    [SerializeField] GameOver gameOver;
     
     void Start()
     {
         movePoint.parent = null;
-        hpGauge.FillAmount = 1.0f;
+        hpGauge.FillAmount = 0.5f;
     }
 
     static readonly Vector2[] Dirs =
@@ -122,6 +122,7 @@ public class PlayerController : MonoBehaviour
                 spriteRenderer.flipY = false;
                 spriteRenderer.transform.DOLocalRotate(new Vector3(0, 0, 90), 0.25f);
                 spriteRenderer.transform.DOBlendableLocalMoveBy(Vector2.down / 4, 0.25f);
+                gameOver.Create();
             }
             hpGauge.Shake();
         }
