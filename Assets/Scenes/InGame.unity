@@ -621,7 +621,7 @@ MonoBehaviour:
     m_Bits: 128
   spriteRenderer: {fileID: 719606808}
   waterCollected: 0
-  waterCapacity: 1
+  waterCapacity: 3
   guideText: {fileID: 136397310}
   sysMsg: {fileID: 1813610547}
   waterSpillPrefab: {fileID: 2422655044596552439, guid: 74f26dbac31b842ebb80d62e0b739d17, type: 3}
