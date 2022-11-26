@@ -1,13 +1,13 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
 
 public class SetTileMap : MonoBehaviour
 {
   [SerializeField]private Tilemap fireTileMap;
   [SerializeField]private Vector3Int tilePos;
   [SerializeField]private float spreadDelay;
-  
   [Header("World edge block")]
   [SerializeField]private float xMin;
   [SerializeField]private float yMin;
@@ -16,14 +16,23 @@ public class SetTileMap : MonoBehaviour
 
   [SerializeField]
   LayerMask noFlame;
+  [SerializeField]
+  LayerMask enhanceFlame;
 
   private void Start()
-  { 
-    Instantiate(fireTileMap, Vector3.zero, Quaternion.identity);
-    StartCoroutine(SpreadFrame());
+  {
+    tilePos.x = (int)transform.position.x;
+    tilePos.y = (int)transform.position.y;
+    StartCoroutine(SpreadFlame());
     StartCoroutine(WeightedValue());
+    StartCoroutine(Dead());
   }
 
+  IEnumerator Dead()
+  {
+    yield return new WaitForSeconds(35f);
+    Destroy(gameObject);
+  }
   private IEnumerator WeightedValue()
   {
     for (int i = 0; i < 6; i++)
@@ -33,20 +42,24 @@ public class SetTileMap : MonoBehaviour
     }
   }
 
-  private IEnumerator SpreadFrame()
+  private IEnumerator SpreadFlame()
   {
     yield return new WaitForSeconds(spreadDelay);
     if(Random.Range(0,2) == 0)
       tilePos.x += ReturnAddPosX();
     else
       tilePos.y += ReturnAddPosY();
-
-    if (!Physics2D.OverlapCircle((Vector3)tilePos, 0.2f, noFlame))
+    if (Physics2D.OverlapCircle((Vector3)tilePos, 0.2f, enhanceFlame))
+    {
+      var flameCollision = Physics2D.OverlapCircle((Vector3)tilePos, 0.2f, enhanceFlame);
+      flameCollision.GetComponent<LightningScript>().enhanceFlameTile();
+    }
+    else if (!Physics2D.OverlapCircle((Vector3)tilePos, 0.2f, noFlame))
     {
       Instantiate(fireTileMap, tilePos, Quaternion.identity);
     }
-
-    StartCoroutine(SpreadFrame());
+    
+    StartCoroutine(SpreadFlame());
   }
 
   private int ReturnAddPosX()

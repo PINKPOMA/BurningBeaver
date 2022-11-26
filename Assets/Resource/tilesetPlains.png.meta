@@ -67,10 +67,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -92,6 +92,30 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: Server
     maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -3574,13 +3598,13 @@ TextureImporter:
       tilesetPlains_26: -1764937791
       tilesetPlains_118: -2025766278
       tilesetPlains_18: -597200802
+      tilesetPlains_152: 115905713
       tilesetPlains_137: -1454017934
       tilesetPlains_147: 441498618
-      tilesetPlains_102: -913979550
       tilesetPlains_43: 138359155
+      tilesetPlains_102: -913979550
       tilesetPlains_149: 2034059333
       tilesetPlains_86: 1088558291
-      tilesetPlains_152: 115905713
       tilesetPlains_126: 1382980908
       tilesetPlains_16: 1215736920
       tilesetPlains_17: -397514753
