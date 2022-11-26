@@ -364,7 +364,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684248659}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 21, y: -14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1728,6 +1728,130 @@ PrefabInstance:
     - target: {fileID: 5706993393377713581, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
       propertyPath: m_Name
       value: OilCaskSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[0].x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[0].y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[1].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[1].y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[2].x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[2].y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[3].x
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[3].y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[4].x
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[4].y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[5].x
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[5].y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[6].x
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[6].y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[7].x
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[7].y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[8].x
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[8].y
+      value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[9].x
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[9].y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[10].x
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[10].y
+      value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[11].x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[11].y
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[12].x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[12].y
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[13].x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[13].y
+      value: -18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[14].x
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706993393377713582, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
+      propertyPath: oilCaskSpawnPos.Array.data[14].y
+      value: -14
       objectReference: {fileID: 0}
     - target: {fileID: 5706993393377713583, guid: 60a584a53cf30458a8cf1f907576326b, type: 3}
       propertyPath: m_RootOrder
