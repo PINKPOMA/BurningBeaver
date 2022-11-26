@@ -26,12 +26,25 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isDead;
     [SerializeField] private GameOver gameOver;
     [SerializeField] private float damagePerSec = 0.2f;
-    [SerializeField] private Tilemap itemTilemap;
+    [SerializeField] private float fillingSpeed = 1f;
+     [SerializeField] private Tilemap itemTilemap;
     [SerializeField] private WorkGauge workGauge;
+    
+    private int _money;
 
     private const float CheckOverlapRadius = 0.2f;
 
     public bool IsDead => isDead;
+    
+    public virtual int  GetMoney =>  _money;
+    public  void  SetMoney(int won) =>  _money += won;
+    public  void  SetwaterCapacity(int num) =>  waterCapacity += num;
+    public virtual int  GetwaterCapacity =>  waterCapacity;
+    public  void  SetMoveSpeed(float num) =>  moveSpeed += num;
+    public virtual float  GetMoveSpeed =>  moveSpeed;
+    public  void  SetFillingSpeed(float num) =>  fillingSpeed -= num;
+    public virtual float  GetFillingSpeed =>  fillingSpeed;
+
 
     private void Start()
     {
@@ -159,7 +172,7 @@ public class PlayerController : MonoBehaviour
                 if (!workGauge.gameObject.activeSelf)
                 {
                     workGauge.gameObject.SetActive(true);
-                    workGauge.StartWork(1.0f, () =>
+                    workGauge.StartWork(fillingSpeed, () =>
                     {
                         waterCollected++;
                         bucketCount.FillWaterBucket();

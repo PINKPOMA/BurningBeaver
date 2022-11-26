@@ -8,6 +8,7 @@ public class FlameSeedSpawner : MonoBehaviour
 {
     [SerializeField]private Vector3 playerPos;
     [SerializeField]private GameObject flameSeed;
+    [SerializeField]private float seedSpeed;
     [Header("World edge block")]
     [SerializeField]private float xMin;
     [SerializeField]private float yMin;
@@ -26,7 +27,10 @@ public class FlameSeedSpawner : MonoBehaviour
         if (!playerController.IsDead)
         {
             Instantiate(flameSeed, playerPos, Quaternion.identity);
-            yield return new WaitForSeconds(15f);
+            yield return new WaitForSeconds(seedSpeed);
+            seedSpeed /= 100;
+            if (seedSpeed <= 3)
+                seedSpeed = 3;
             RandomPos();
             StartCoroutine(SeedSpawn());
         }

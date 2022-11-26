@@ -42,8 +42,8 @@ public class SetTileMap : MonoBehaviour
   {
     for (int i = 0; i < 6; i++)
     {
-      yield return new WaitForSeconds(20f);
-      spreadDelay -= 0.2f;
+      yield return new WaitForSeconds(5f);
+      spreadDelay -= i / 20f;
     }
   }
 
