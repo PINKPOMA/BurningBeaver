@@ -18,6 +18,8 @@ public class SetTileMap : MonoBehaviour
   LayerMask noFlame;
   [SerializeField]
   LayerMask enhanceFlame;
+  [SerializeField]
+  LayerMask oilCaskLayer;
 
   [SerializeField] private PlayerController playerController;
 
@@ -34,7 +36,7 @@ public class SetTileMap : MonoBehaviour
   IEnumerator Dead()
   {
     yield return new WaitForSeconds(35f);
-    Destroy(gameObject);
+    Destroy(gameObject.GetComponent<SetTileMap>());
   }
   private IEnumerator WeightedValue()
   {
@@ -57,6 +59,11 @@ public class SetTileMap : MonoBehaviour
       tilePos.x += ReturnAddPosX();
     else
       tilePos.y += ReturnAddPosY();
+    if (Physics2D.OverlapCircle((Vector3)tilePos, 0.2f, oilCaskLayer))
+    {
+      var flameCollision = Physics2D.OverlapCircle((Vector3)tilePos, 0.2f, oilCaskLayer);
+      flameCollision.GetComponent<OilCask>().Bomb();
+    }
     if (Physics2D.OverlapCircle((Vector3)tilePos, 0.2f, enhanceFlame))
     {
       var flameCollision = Physics2D.OverlapCircle((Vector3)tilePos, 0.2f, enhanceFlame);

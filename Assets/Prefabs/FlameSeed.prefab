@@ -57,4 +57,7 @@ MonoBehaviour:
   enhanceFlame:
     serializedVersion: 2
     m_Bits: 128
+  oilCaskLayer:
+    serializedVersion: 2
+    m_Bits: 512
   playerController: {fileID: 0}

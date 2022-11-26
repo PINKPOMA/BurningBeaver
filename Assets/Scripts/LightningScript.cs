@@ -14,13 +14,16 @@ public class LightningScript : MonoBehaviour
    private void Start()
    {
       _flameTilemap = GetComponent<Tilemap>();
-      if (Random.Range(0, 10) != 9)
+      if (nowFlameTile <= 1)
       {
-         lightning.gameObject.SetActive(false);
-      }
-      else
-      {
-         StartCoroutine(Stoplightning());
+         if (Random.Range(0, 10) != 9)
+         {
+            lightning.gameObject.SetActive(false);
+         }
+         else
+         {
+            StartCoroutine(Stoplightning());
+         }
       }
    }
    IEnumerator Stoplightning()
@@ -31,7 +34,6 @@ public class LightningScript : MonoBehaviour
 
    public void enhanceFlameTile()
    {
-      Debug.Log("VAR");
       nowFlameTile++;
       if (nowFlameTile < 3)
          _flameTilemap.SwapTile(flameTileBase[nowFlameTile - 1],flameTileBase[nowFlameTile]);
