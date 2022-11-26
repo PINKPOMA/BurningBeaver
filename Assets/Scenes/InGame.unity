@@ -1839,22 +1839,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2129250278}
     m_Modifications:
-    - target: {fileID: 9021423789894079035, guid: f21f19a22594e47968bfde01bbbaf68e, type: 3}
-      propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[0].Y
-      value: -130000000
-      objectReference: {fileID: 0}
-    - target: {fileID: 9021423789894079035, guid: f21f19a22594e47968bfde01bbbaf68e, type: 3}
-      propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[1].X
-      value: 60000000
-      objectReference: {fileID: 0}
-    - target: {fileID: 9021423789894079035, guid: f21f19a22594e47968bfde01bbbaf68e, type: 3}
-      propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[2].Y
-      value: -80000000
-      objectReference: {fileID: 0}
-    - target: {fileID: 9021423789894079035, guid: f21f19a22594e47968bfde01bbbaf68e, type: 3}
-      propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[3].X
-      value: -20000000
-      objectReference: {fileID: 0}
     - target: {fileID: 9021423789894079038, guid: f21f19a22594e47968bfde01bbbaf68e, type: 3}
       propertyPath: m_Name
       value: Water
