@@ -38,7 +38,13 @@ public class PlayerController : MonoBehaviour
     
     public virtual int  GetMoney =>  _money;
     public  void  SetMoney(int won) =>  _money += won;
-    public  void  SetwaterCapacity(int num) =>  waterCapacity += num;
+
+    public void SetwaterCapacity(int num)
+    {
+        waterCapacity += num;
+        bucketCount.Init(waterCapacity);
+    }
+
     public virtual int  GetwaterCapacity =>  waterCapacity;
     public  void  SetMoveSpeed(float num) =>  moveSpeed += num;
     public virtual float  GetMoveSpeed =>  moveSpeed;
