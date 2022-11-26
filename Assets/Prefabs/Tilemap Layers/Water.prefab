@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9021423789894079038}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -451,11 +451,15 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: f97350e96ba837a45bc16021d2e0de20, type: 2}
   - m_RefCount: 32
     m_Data: {fileID: 11400000, guid: 1f35a5fdfab8d0d429ccc477dd93cde9, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 8
     m_Data: {fileID: 135135494, guid: 30c00a599716e234b9ed2af8e0630534, type: 3}
   - m_RefCount: 32
     m_Data: {fileID: 1973847530, guid: 30c00a599716e234b9ed2af8e0630534, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 40
     m_Data:
@@ -481,8 +485,8 @@ Tilemap:
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -2, y: -13, z: 0}
-  m_Size: {x: 8, y: 13, z: 1}
+  m_Origin: {x: -4, y: -13, z: 0}
+  m_Size: {x: 10, y: 13, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -593,12 +597,12 @@ CompositeCollider2D:
   - m_Collider: {fileID: 9021423789894079034}
     m_ColliderPaths:
     - - X: 60000000
+        Y: -80000000
+      - X: -20000000
+        Y: -80000000
+      - X: -20000000
         Y: -130000000
       - X: 60000000
-        Y: -80000000
-      - X: -20000000
-        Y: -80000000
-      - X: -20000000
         Y: -130000000
   m_CompositePaths:
     m_Paths:
