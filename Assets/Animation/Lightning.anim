@@ -8,7 +8,7 @@ AnimationClip:
   m_PrefabAsset: {fileID: 0}
   m_Name: Lightning
   serializedVersion: 6
-  m_Legacy: 0
+  m_Legacy: 1
   m_Compressed: 0
   m_UseHighQualityCurve: 1
   m_RotationCurves: []
@@ -45,23 +45,8 @@ AnimationClip:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings:
-    - serializedVersion: 2
-      path: 0
-      attribute: 0
-      script: {fileID: 0}
-      typeID: 212
-      customType: 23
-      isPPtrCurve: 1
-    pptrCurveMapping:
-    - {fileID: 21300000, guid: 51c844b415bea0e42ab4502e0898b176, type: 3}
-    - {fileID: 21300000, guid: f8356486d88c42f49bd04d3d37e24cca, type: 3}
-    - {fileID: 21300000, guid: 555310ae10209e14f94b2f5cddf8edec, type: 3}
-    - {fileID: 21300000, guid: ff3974bd1dd2fe4489a6b925e388b3a1, type: 3}
-    - {fileID: 21300000, guid: 6693fef4305ee954db31d9a06d9b7ed5, type: 3}
-    - {fileID: 21300000, guid: 9dc97d23656219349bbf44508c23df28, type: 3}
-    - {fileID: 21300000, guid: de623c742e9152946b3470f6fe67935c, type: 3}
-    - {fileID: 21300000, guid: d78208a1bf554d5459614b0a931c0c75, type: 3}
+    genericBindings: []
+    pptrCurveMapping: []
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
