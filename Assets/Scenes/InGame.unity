@@ -590,7 +590,7 @@ GameObject:
   - component: {fileID: 684248662}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -915,7 +915,6 @@ GameObject:
   - component: {fileID: 995933462}
   - component: {fileID: 995933461}
   - component: {fileID: 995933460}
-  - component: {fileID: 995933463}
   m_Layer: 6
   m_Name: Water
   m_TagString: Water
@@ -1526,18 +1525,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &995933463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 995933456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15bb2df6082536845987038fdfa418a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1221254394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,7 +1536,6 @@ GameObject:
   - component: {fileID: 1221254395}
   - component: {fileID: 1221254396}
   - component: {fileID: 1221254397}
-  - component: {fileID: 1221254398}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -16101,26 +16087,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!95 &1221254398
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221254394}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 29a1c094409bb2846953f010638e23ea, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1528608643
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16522,16 +16488,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2129250276}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e75d4d56e1f6034b9c27c01d6d69b7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 052d867a49372a44fa511e639edbd099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTileMap: {fileID: 2958329026369829304, guid: af0911439fe7ac744a5fb12e68a42d9d, type: 3}
-  tilePos: {x: 0, y: 0, z: 0}
-  spreadDelay: 1
+  playerPos: {x: 0, y: 0, z: 0}
+  flameSeed: {fileID: 7162301650867640806, guid: 7f445f27b89242f49845a24e64cabbbe, type: 3}
   xMin: -9
   yMin: -23
   xMax: 31
   yMax: 11
-  noFlame:
-    serializedVersion: 2
-    m_Bits: 64
