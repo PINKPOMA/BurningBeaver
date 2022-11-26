@@ -25,7 +25,7 @@ public class FlameSeedSpawner : MonoBehaviour
 
     IEnumerator EndReady()
     {
-        yield return new WaitForSeconds(110f);
+        yield return new WaitForSeconds(180f);
         Destroy(gameObject.GetComponent<FlameSeedSpawner>());
     }
     IEnumerator SeedSpawn()

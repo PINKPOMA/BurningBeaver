@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
         }
 
         var flameCount = FindObjectsOfType<LightningScript>().Length;
-        var flameProgress = flameCount / 1.5f;
+        var flameProgress = flameCount / 1.3f;
         flameProgressText.text = $"{flameProgress:f0}%";
 
         if (flameProgress > 100.0f)
