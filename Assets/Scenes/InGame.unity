@@ -607,7 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca3134ee95d94660923e58b10b165d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bucketCount: {fileID: 0}
+  bucketCount: {fileID: 2102536532}
   moveSpeed: 5
   movePoint: {fileID: 449661330}
   whatStopsMovement:
@@ -16453,6 +16453,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1282338927175256527, guid: 6fe8cc1d7602b8e418f0c31a23a3cccb, type: 3}
   m_PrefabInstance: {fileID: 2102536530}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2102536532 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1282338927175256562, guid: 6fe8cc1d7602b8e418f0c31a23a3cccb, type: 3}
+  m_PrefabInstance: {fileID: 2102536530}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c15eb7b3af8d7554a8ddc788473ecebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2129250276
 GameObject:
   m_ObjectHideFlags: 0
