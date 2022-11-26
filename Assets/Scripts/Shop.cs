@@ -11,10 +11,9 @@ public class Shop : MonoBehaviour
    [SerializeField] private TextMeshProUGUI moveSpeedPriceText;
    [SerializeField] private TextMeshProUGUI waterPriceText;
    [SerializeField] private int bucketPrice;
-   [SerializeField] private int maxBucket;
    [SerializeField] private int moveSpeedPrice;
    [SerializeField] private int waterPrice;
-
+   [SerializeField] private SystemMessage sysMsg;
    private void Start()
    {
       var user = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
@@ -39,7 +38,7 @@ public class Shop : MonoBehaviour
       }
       else
       {
-         Debug.Log("돈 부족");
+         sysMsg.Create("돈이 부족합니다.");
       }
    }
    public void BuymoveSpeed()
@@ -57,7 +56,7 @@ public class Shop : MonoBehaviour
       }
       else
       {
-         Debug.Log("돈 부족");
+         sysMsg.Create("돈이 부족합니다.");
       }
    }
    public void BuyWater()
@@ -74,7 +73,7 @@ public class Shop : MonoBehaviour
       }
       else
       {
-         Debug.Log("돈 부족");
+         sysMsg.Create("돈이 부족합니다.");
       }
    }
 
