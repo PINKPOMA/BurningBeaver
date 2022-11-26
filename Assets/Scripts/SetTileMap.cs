@@ -1,13 +1,13 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
 
 public class SetTileMap : MonoBehaviour
 {
   [SerializeField]private Tilemap fireTileMap;
   [SerializeField]private Vector3Int tilePos;
   [SerializeField]private float spreadDelay;
-  
   [Header("World edge block")]
   [SerializeField]private float xMin;
   [SerializeField]private float yMin;
@@ -18,10 +18,16 @@ public class SetTileMap : MonoBehaviour
   LayerMask noFlame;
 
   private void Start()
-  { 
-    Instantiate(fireTileMap, Vector3.zero, Quaternion.identity);
-    StartCoroutine(SpreadFrame());
+  {
+    tilePos.x = (int)transform.position.x;
+    tilePos.y = (int)transform.position.y;
+    StartCoroutine(SpreadFlame());
     StartCoroutine(WeightedValue());
+  } 
+
+  float ReturnAddPlayerPos()
+  {
+    return Random.Range(0, 2) == 0 ? Random.Range(-3f, -5f) : Random.Range(3f, 5f);
   }
 
   private IEnumerator WeightedValue()
@@ -33,7 +39,7 @@ public class SetTileMap : MonoBehaviour
     }
   }
 
-  private IEnumerator SpreadFrame()
+  private IEnumerator SpreadFlame()
   {
     yield return new WaitForSeconds(spreadDelay);
     if(Random.Range(0,2) == 0)
@@ -46,7 +52,7 @@ public class SetTileMap : MonoBehaviour
       Instantiate(fireTileMap, tilePos, Quaternion.identity);
     }
 
-    StartCoroutine(SpreadFrame());
+    StartCoroutine(SpreadFlame());
   }
 
   private int ReturnAddPosX()
