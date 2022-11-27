@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class HpGauge : MonoBehaviour
 {
-    [SerializeField] Image slider;
-    [SerializeField] TextMeshProUGUI title;
-    
-    bool isShaking;
+    [SerializeField] private Image slider;
+    [SerializeField] private TextMeshProUGUI title;
+
+    private bool isShaking;
     
     public float FillAmount
     {

@@ -14,7 +14,7 @@ public class OilCaskSpawner : MonoBehaviour
         StartCoroutine(OilCaskSpawn());
     }
 
-    IEnumerator OilCaskSpawn()
+    private IEnumerator OilCaskSpawn()
     {
         Instantiate(oilCaskTilemap,oilCaskSpawnPos[Random.Range(0, 15)] , Quaternion.identity);
         yield return new WaitForSeconds(15f);

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Colliding : MonoBehaviour
 {
-    IEnumerator Start()
+    private IEnumerator Start()
     {
         for (int i = 0; i < 10; i++)
         {

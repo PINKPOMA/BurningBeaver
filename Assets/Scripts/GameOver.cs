@@ -5,11 +5,9 @@ using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
-    [SerializeField]
-    GameObject prefab;
+    [SerializeField] private GameObject prefab;
 
-    [SerializeField]
-    Canvas canvas;
+    [SerializeField] private Canvas canvas;
     
     public void Create(PlayerController.GameOverReason gameOverReason)
     {

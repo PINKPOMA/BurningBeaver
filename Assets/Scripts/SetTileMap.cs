@@ -13,12 +13,9 @@ public class SetTileMap : MonoBehaviour
   [SerializeField]private float xMax;
   [SerializeField]private float yMax;
 
-  [SerializeField]
-  LayerMask noFlame;
-  [SerializeField]
-  LayerMask enhanceFlame;
-  [SerializeField]
-  LayerMask oilCaskLayer;
+  [SerializeField] private LayerMask noFlame;
+  [SerializeField] private LayerMask enhanceFlame;
+  [SerializeField] private LayerMask oilCaskLayer;
 
   [SerializeField] private PlayerController playerController;
 
@@ -32,7 +29,7 @@ public class SetTileMap : MonoBehaviour
     StartCoroutine(Dead());
   }
 
-  IEnumerator Dead()
+  private IEnumerator Dead()
   {
     yield return new WaitForSeconds(35f);
     Destroy(gameObject.GetComponent<SetTileMap>());

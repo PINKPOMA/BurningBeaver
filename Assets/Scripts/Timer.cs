@@ -5,14 +5,15 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
-    
-    Slider _slTimer;
-    void Start()
+
+    private Slider _slTimer;
+
+    private void Start()
     {
         _slTimer = GetComponent<Slider>();
     }
- 
-    void Update()
+
+    private void Update()
     {
         if (playerController.IsDead)
         {

@@ -24,7 +24,8 @@ public class LightningScript : MonoBehaviour
          }
       }
    }
-   IEnumerator Stoplightning()
+
+   private IEnumerator Stoplightning()
    {
       yield return new WaitForSeconds(1.11f);
       Destroy(lightning);

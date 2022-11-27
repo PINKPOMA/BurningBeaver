@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class NextSceen : MonoBehaviour
 {
-    void Start()
+    private void Start()
     {
         SceneManager.LoadScene("Title");
     }

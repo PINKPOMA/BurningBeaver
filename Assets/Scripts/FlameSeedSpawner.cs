@@ -22,12 +22,13 @@ public class FlameSeedSpawner : MonoBehaviour
         StartCoroutine(EndReady());
     }
 
-    IEnumerator EndReady()
+    private IEnumerator EndReady()
     {
         yield return new WaitForSeconds(180f);
         Destroy(gameObject.GetComponent<FlameSeedSpawner>());
     }
-    IEnumerator SeedSpawn()
+
+    private IEnumerator SeedSpawn()
     {
         if (!playerController.IsDead)
         {
@@ -41,7 +42,7 @@ public class FlameSeedSpawner : MonoBehaviour
         }
     }
 
-    void RandomPos()
+    private void RandomPos()
     {
         playerPos = GameObject.FindWithTag("Player").GetComponent<Transform>().position;
         if (Random.Range(0, 2) == 0)
@@ -62,7 +63,8 @@ public class FlameSeedSpawner : MonoBehaviour
         }
         
     }
-    float ReturnAddPlayerPos()
+
+    private float ReturnAddPlayerPos()
     {
         return Random.Range(0, 2) == 0 ? Random.Range(-3f, -5f) : Random.Range(3f, 5f);
     }

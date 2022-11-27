@@ -8,8 +8,9 @@ public class Title : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private GameObject credits;
     [SerializeField] private GameObject intro;
-    
-    void Update()
+    [SerializeField] private ExitConfirm exitConfirm;
+
+    private void Update()
     {
         cam.backgroundColor = Color.Lerp(c1, c2, Mathf.PingPong(Time.time, 1));
     }
@@ -30,6 +31,6 @@ public class Title : MonoBehaviour
     public void OnExit()
     {
         SoundManager.Instance.Play(SoundManager.Instance.buttonClickSound);
-        Application.Quit();
+        exitConfirm.Create();
     }
 }
