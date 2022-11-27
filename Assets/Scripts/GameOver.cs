@@ -1,14 +1,14 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
     [SerializeField] private GameObject prefab;
-
     [SerializeField] private Canvas canvas;
-    
+
     public void Create(PlayerController.GameOverReason gameOverReason)
     {
         var go = Instantiate(prefab, canvas.transform, false);
@@ -28,5 +28,7 @@ public class GameOver : MonoBehaviour
         {
             SceneManager.LoadScene("Title");
         });
+        
+        EventSystem.current.SetSelectedGameObject(btnList[0].gameObject);
     }
 }
