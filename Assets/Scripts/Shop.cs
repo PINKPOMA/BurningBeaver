@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -19,6 +20,13 @@ public class Shop : MonoBehaviour
         bucketPriceText.text = bucketPrice + "G";
         moveSpeedPriceText.text = moveSpeedPrice + "G";
         waterPriceText.text = waterPrice + "G";
+        
+        Time.timeScale = 0;
+    }
+
+    private void OnDisable()
+    {
+        Time.timeScale = 1;
     }
 
     public void BuyBucket()
@@ -79,7 +87,6 @@ public class Shop : MonoBehaviour
 
     public void Exit()
     {
-        Time.timeScale = 1;
         gameObject.SetActive(false);
     }
 
