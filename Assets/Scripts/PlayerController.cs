@@ -184,9 +184,9 @@ public class PlayerController : MonoBehaviour
         guideText.text = IsDead
             ? ""
             : waterCollected == 0 && isNearWater
-                ? "Z 키를 눌러 물을 담으세요."
+                ? "Z키를 눌러 물을 담으세요."
                 : isNearFlame && waterCollected > 0
-                    ? "X 키를 눌러 물을 뿌리세요."
+                    ? "X키를 눌러 물을 뿌리세요."
                     : isNearFlame && waterCollected == 0
                         ? "물을 담아 오세요!!!"
                         : "";
