@@ -15,11 +15,8 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
-        if (playerController.IsDead)
-        {
-            return;
-        }
-        
+        if (playerController.IsDead) return;
+
         if (_slTimer.value < _slTimer.maxValue)
         {
             _slTimer.value += Time.deltaTime;
