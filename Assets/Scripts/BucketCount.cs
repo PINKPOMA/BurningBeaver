@@ -38,10 +38,11 @@ public class BucketCount : MonoBehaviour
 
     public void Init(int waterCapacity)
     {
-        for (int i = 0; i < buckets.Length; i++)
+        foreach (var bucket in buckets)
         {
-            buckets[i].enabled = false;
+            bucket.enabled = false;
         }
+
         for (int i = 0; i < waterCapacity; i++)
         {
             buckets[i].enabled = true;
