@@ -36,7 +36,7 @@ public class SetTileMap : MonoBehaviour
   }
   private IEnumerator WeightedValue()
   {
-    for (int i = 0; i < 6; i++)
+    for (var i = 0; i < 6; i++)
     {
       yield return new WaitForSeconds(5f);
       spreadDelay -= i / 20f;
@@ -49,27 +49,34 @@ public class SetTileMap : MonoBehaviour
     {
       yield break;
     }
-    
+
     yield return new WaitForSeconds(spreadDelay);
-    if(Random.Range(0,2) == 0)
+    if (Random.Range(0, 2) == 0)
+    {
       tilePos.x += ReturnAddPosX();
+    }
     else
+    {
       tilePos.y += ReturnAddPosY();
+    }
+
     if (Physics2D.OverlapCircle((Vector3)tilePos, 0.2f, oilCaskLayer))
     {
       var flameCollision = Physics2D.OverlapCircle((Vector3)tilePos, 0.2f, oilCaskLayer);
       flameCollision.GetComponent<OilCask>().Bomb();
     }
+
     if (Physics2D.OverlapCircle((Vector3)tilePos, 0.2f, enhanceFlame))
     {
       var flameCollision = Physics2D.OverlapCircle((Vector3)tilePos, 0.2f, enhanceFlame);
-      flameCollision.GetComponent<LightningScript>().enhanceFlameTile();
+      flameCollision.GetComponent<LightningScript>().EnhanceFlameTile();
     }
+    
     else if (!Physics2D.OverlapCircle((Vector3)tilePos, 0.2f, noFlame))
     {
       Instantiate(fireTileMap, tilePos, Quaternion.identity);
     }
-    
+
     StartCoroutine(SpreadFlame());
   }
 
@@ -87,7 +94,9 @@ public class SetTileMap : MonoBehaviour
     else
     {
       if(tilePos.x + 1 < xMax)
+      {
         return 1;
+      }
       else
       {
         return -1;
@@ -108,9 +117,13 @@ public class SetTileMap : MonoBehaviour
     else
     {
       if (tilePos.y + 1 < yMax)
+      {
         return 1;
+      }
       else
+      {
         return -1;
+      }
     }
   }
 }
