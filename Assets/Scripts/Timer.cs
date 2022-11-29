@@ -21,6 +21,7 @@ public class Timer : MonoBehaviour
         {
             _slTimer.value += Time.deltaTime;
         }
+        
         else
         {
             SceneManager.LoadScene("EndingScene");
