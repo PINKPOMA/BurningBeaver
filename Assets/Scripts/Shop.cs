@@ -1,46 +1,48 @@
-using System;
 using TMPro;
 using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI userMoney;
+    [SerializeField] private SystemMessage sysMsg;
+    [SerializeField] private TextMeshProUGUI userMoneyText;
     [SerializeField] private TextMeshProUGUI bucketPriceText;
     [SerializeField] private TextMeshProUGUI moveSpeedPriceText;
     [SerializeField] private TextMeshProUGUI waterPriceText;
     [SerializeField] private int bucketPrice;
     [SerializeField] private int moveSpeedPrice;
     [SerializeField] private int waterPrice;
-    [SerializeField] private SystemMessage sysMsg;
+    [SerializeField] private PlayerController player;
+    private float _minFillingSpeed = 0.2f;
+    private int _maxMoveSpeed = 9;
+    private int _maxWaterCapacity = 5;
 
     private void OnEnable()
     {
-        var user = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        userMoney.text = "Gold:" + user.GetMoney;
-        bucketPriceText.text = bucketPrice + "G";
-        moveSpeedPriceText.text = moveSpeedPrice + "G";
-        waterPriceText.text = waterPrice + "G";
+        userMoneyText.text = $"Gold:{player.money}";
+        bucketPriceText.text = $"{bucketPrice}G";
+        moveSpeedPriceText.text = $"{moveSpeedPrice}G";
+        waterPriceText.text = $"{waterPrice}G";
         
         Time.timeScale = 0;
     }
-
+    
     private void OnDisable()
     {
         Time.timeScale = 1;
     }
 
-    public void BuyBucket()
+    public void UpgradeBucket()
     {
         var user = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        if (user.GetMoney >= bucketPrice)
+        if (player.money >= bucketPrice)
         {
-            if (5 <= user.GetwaterCapacity) return;
+            if (user.GetWaterCapacity >= _maxWaterCapacity) return;
 
-            user.SetMoney(-bucketPrice);
+            player.AddMoney(-bucketPrice);
             user.SetWaterCapacity(1);
             bucketPrice += bucketPrice / 10;
-            bucketPriceText.text = bucketPrice + "G";
-            userMoney.text = "Gold:" + user.GetMoney;
+            bucketPriceText.text = $"{bucketPrice}G";
+            userMoneyText.text =$"Gold:{player.money}";
         }
         else
         {
@@ -48,18 +50,18 @@ public class Shop : MonoBehaviour
         }
     }
 
-    public void BuyMoveSpeed()
+    public void UpgradeMoveSpeed()
     {
         var user = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        if (user.GetMoney >= moveSpeedPrice)
+        if (player.money >= moveSpeedPrice)
         {
-            if (user.GetMoveSpeed > 9) return;
+            if (user.GetMoveSpeed >= _maxMoveSpeed) return;
 
-            user.SetMoney(-moveSpeedPrice);
+            player.AddMoney(-moveSpeedPrice);
             user.SetMoveSpeed(1);
             moveSpeedPrice += moveSpeedPrice / 10;
-            moveSpeedPriceText.text = moveSpeedPrice + "G";
-            userMoney.text = "Gold:" + user.GetMoney;
+            moveSpeedPriceText.text = $"{moveSpeedPrice}G";
+            userMoneyText.text = $"Gold:{player.money}";
         }
         else
         {
@@ -67,17 +69,17 @@ public class Shop : MonoBehaviour
         }
     }
 
-    public void BuyWater()
+    public void UpgradeWaterFillingSpeed()
     {
         var user = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        if (user.GetMoney >= waterPrice)
+        if (player.money >= waterPrice)
         {
-            if (user.GetFillingSpeed <= 0.2f) return;
-            user.SetMoney(-waterPrice);
+            if (user.GetWaterFillingSpeed <= _minFillingSpeed) return;
+            player.AddMoney(-waterPrice);
             user.SetFillingSpeed(0.1f);
             waterPrice += waterPrice / 10;
-            waterPriceText.text = waterPrice + "G";
-            userMoney.text = "Gold:" + user.GetMoney;
+            waterPriceText.text = $"{waterPrice}G";
+            userMoneyText.text = $"Gold:{player.money}";
         }
         else
         {
@@ -99,17 +101,17 @@ public class Shop : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            BuyWater();
+            UpgradeWaterFillingSpeed();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            BuyMoveSpeed();
+            UpgradeMoveSpeed();
         }
         
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            BuyBucket();
+            UpgradeBucket();
         }
     }
 }
