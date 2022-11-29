@@ -3,12 +3,16 @@ using UnityEngine;
 
 public class Colliding : MonoBehaviour
 {
+    [SerializeField] private float scaleUpX = 0.6f;
+    [SerializeField] private float scaleUpY = 0.6f;
+    [SerializeField] private float waterDuration = 0.05f;
+    
     private IEnumerator Start()
     {
-        for (int i = 0; i < 10; i++)
+        for (var i = 0; i < 10; i++)
         {
-            transform.localScale += new Vector3(0.6f, 0.6f, 0);
-            yield return new WaitForSeconds(0.05f);
+            transform.localScale += new Vector3(scaleUpX, scaleUpY, 0);
+            yield return new WaitForSeconds(waterDuration);
         }
 
         transform.localScale = Vector3.zero;
@@ -20,9 +24,8 @@ public class Colliding : MonoBehaviour
     {
         if (col.CompareTag("Flame"))
         {
-            //Debug.Log($"gameObject: {col.gameObject.name} is detected!");
-            var user = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-            user.SetMoney(5);
+            var player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+            player.AddMoney(5);
             Destroy(col.gameObject);
         }
     }
