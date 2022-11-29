@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SoundManager : Singleton<SoundManager>
 {
-    private AudioSource audioSource;
+    private AudioSource _audioSource;
 
     [Header("AudioClips")]
     public AudioClip buttonClickSound;
@@ -14,11 +14,11 @@ public class SoundManager : Singleton<SoundManager>
     protected override void Awake()
     {
         base.Awake();
-        audioSource = GetComponent<AudioSource>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void Play(AudioClip audioClip)
     {
-        audioSource.PlayOneShot(audioClip);
+        _audioSource.PlayOneShot(audioClip);
     }
 }
