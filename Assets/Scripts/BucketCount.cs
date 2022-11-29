@@ -3,37 +3,31 @@ using UnityEngine.UI;
 
 public class BucketCount : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite emptyBucketSprite;
     [SerializeField] private Sprite fillBucketSprite;
     
     [SerializeField] private Image[] buckets;
-    private int nextSpendWater;
-    private int nextFillWater;
-
-    private void Awake()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
+    private int _nextSpendWater;
+    private int _nextFillWater;
 
     private void Start()
     {
-        nextSpendWater = buckets.Length - 1;
-        nextFillWater = 0;
+        _nextSpendWater = buckets.Length - 1;
+        _nextFillWater = 0;
     }
 
     public void SpendWaterBucket()
     {
-        buckets[nextSpendWater].sprite = emptyBucketSprite;
-        nextFillWater = nextSpendWater;
-        nextSpendWater--;
+        buckets[_nextSpendWater].sprite = emptyBucketSprite;
+        _nextFillWater = _nextSpendWater;
+        _nextSpendWater--;
     }
 
     public void FillWaterBucket()
     {
-        buckets[nextFillWater].sprite = fillBucketSprite;
-        nextSpendWater = nextFillWater;
-        nextFillWater++;
+        buckets[_nextFillWater].sprite = fillBucketSprite;
+        _nextSpendWater = _nextFillWater;
+        _nextFillWater++;
     }
 
     public void Init(int waterCapacity)
@@ -43,7 +37,7 @@ public class BucketCount : MonoBehaviour
             bucket.enabled = false;
         }
 
-        for (int i = 0; i < waterCapacity; i++)
+        for (var i = 0; i < waterCapacity; i++)
         {
             buckets[i].enabled = true;
         }
