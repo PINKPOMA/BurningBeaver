@@ -26,7 +26,6 @@ public class RankingManager : MonoBehaviour
     public void SetRank(int num)
     {
         playerScore = num;
-        RankData temp;
         if (playerScore > ranking[4].score)
         {
             ranking[4].score = playerScore;
@@ -35,7 +34,7 @@ public class RankingManager : MonoBehaviour
             {
                 while (ranking[i].score > ranking[i-1].score)
                 {
-                    temp = ranking[i];
+                    RankData temp = ranking[i];
                     ranking[i] = ranking[i -1];
                     ranking[i -1] = temp;
                 }
