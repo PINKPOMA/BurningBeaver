@@ -439,7 +439,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "2. \uC0B0\uBD88\uC5D0\uC11C <color=yellow>(X\uD0A4)</color>\uB85C\n  
+  m_text: "2. \uC0B0\uBD88\uC5D0\uC11C <color=yellow>(Z\uD0A4)</color>\uB85C\n  
     \uBB3C \uBFCC\uB9AC\uAE30"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7287d75f1b0a64c13847cff126a967f1, type: 2}
@@ -2736,7 +2736,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1. \uBB3C\uAC00\uC5D0\uC11C <color=yellow>(Z\uD0A4)</color>\uB85C\n  
+  m_text: "1. \uBB3C\uAC00\uC5D0\uC11C <color=yellow>(X\uD0A4)</color>\uB85C\n  
     \uBB3C \uB2F4\uAE30"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7287d75f1b0a64c13847cff126a967f1, type: 2}
