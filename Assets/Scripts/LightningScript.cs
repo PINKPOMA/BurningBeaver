@@ -6,36 +6,39 @@ using Random = UnityEngine.Random;
 public class LightningScript : MonoBehaviour
 {
    [SerializeField] private GameObject lightning;
-   [SerializeField] private Tilemap _flameTilemap;
+   [SerializeField] private Tilemap flameTilemap;
    [SerializeField] private int nowFlameTile;
    [SerializeField] private TileBase[] flameTileBase;
+
    private void Start()
    {
-      _flameTilemap = GetComponent<Tilemap>();
-      if (nowFlameTile <= 1)
+      flameTilemap = GetComponent<Tilemap>();
+      if (nowFlameTile > 1)
       {
-         if (Random.Range(0, 10) != 9)
-         {
-            lightning.gameObject.SetActive(false);
-         }
-         else
-         {
-            StartCoroutine(Stoplightning());
-         }
+         return;
+      }
+
+      if (Random.Range(0, 10) != 9)
+      {
+         lightning.gameObject.SetActive(false);
+      }
+      else
+      {
+         StartCoroutine(StopLightning());
       }
    }
 
-   private IEnumerator Stoplightning()
+   private IEnumerator StopLightning()
    {
       yield return new WaitForSeconds(1.11f);
       Destroy(lightning);
    }
 
-   public void enhanceFlameTile()
+   public void EnhanceFlameTile()
    {
       nowFlameTile++;
-      if (nowFlameTile < 3 && _flameTilemap)
-         _flameTilemap.SwapTile(flameTileBase[nowFlameTile - 1],flameTileBase[nowFlameTile]);
+      if (nowFlameTile < 3 && flameTilemap)
+         flameTilemap.SwapTile(flameTileBase[nowFlameTile - 1],flameTileBase[nowFlameTile]);
    }
 
    private void OnTriggerEnter2D(Collider2D col)
