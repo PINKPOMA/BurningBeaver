@@ -23,10 +23,10 @@ public class WorkGauge : MonoBehaviour
     public void StartWork(float duration, Action action)
     {
         StopAllCoroutines();
-        StartCoroutine(StartWorkCoro(duration, action));
+        StartCoroutine(StartWorkCoroutine(duration, action));
     }
 
-    private IEnumerator StartWorkCoro(float duration, Action action)
+    private IEnumerator StartWorkCoroutine(float duration, Action action)
     {
         FillAmount = 0;
         while (FillAmount < 1)
