@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask item;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private int waterCollected;
-    [SerializeField] private int waterCapacity = 1;
+    [SerializeField] private int waterCapacity = 3;
     [SerializeField] private TextMeshProUGUI guideText;
     [SerializeField] private SystemMessage sysMsg;
     [SerializeField] private GameObject waterSpillPrefab;
@@ -26,20 +26,24 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private HpGauge hpGauge;
     [SerializeField] private bool isDead;
     [SerializeField] private GameOver gameOver;
-    [SerializeField] private float damagePerSec = 0.2f;
-    [SerializeField] private float fillingSpeed = 1f;
+    [SerializeField] private float damagePerSec = 0.2f; 
+    [SerializeField] private float waterFillingSpeed = 1f;
     [SerializeField] private Tilemap itemTilemap;
     [SerializeField] private WorkGauge workGauge;
+    [SerializeField] private KeyCode spreadWater;
+    [SerializeField] private KeyCode fillWater;
     [SerializeField] private TextMeshProUGUI flameProgressText;
+    [SerializeField] private TextMeshProUGUI userMoneyText;
+    
+    public int money;
 
-    private int _money;
-
+    public int flameCount;
+    public float flameProgress;
+    
     private const float CheckOverlapRadius = 0.2f;
 
     public bool IsDead => isDead;
 
-    public int GetMoney => _money;
-    public void SetMoney(int won) => _money += won;
 
     public void SetWaterCapacity(int num)
     {
@@ -47,33 +51,33 @@ public class PlayerController : MonoBehaviour
         bucketCount.Init(waterCapacity);
     }
 
-    public int GetwaterCapacity => waterCapacity;
+    public int GetWaterCapacity => waterCapacity;
     public void SetMoveSpeed(float num) => moveSpeed += num;
     public float GetMoveSpeed => moveSpeed;
 
     public void SetFillingSpeed(float num)
     {
-        fillingSpeed -= num;
-        if (fillingSpeed <= 0.2)
-            fillingSpeed = 0.2f;
+        waterFillingSpeed -= num;
+        if (waterFillingSpeed <= 0.2)
+            waterFillingSpeed = 0.2f;
     }
 
-    public float GetFillingSpeed => fillingSpeed;
+    public float GetWaterFillingSpeed => waterFillingSpeed;
 
 
     private IEnumerator Start()
     {
         movePoint.parent = null;
-        hpGauge.FillAmount = 0.5f;
+        hpGauge.FillAmount = 1f;
         bucketCount.Init(waterCapacity);
-        
+
         for (var i = 10; i > 0; i--)
         {
             sysMsg.Create($"{i}초 뒤 산불이 시작됩니다.");
             yield return new WaitForSeconds(1.0f);
         }
-        
-        sysMsg.Create($"산불이 났습니다~~~");
+
+        sysMsg.Create("산불이 났습니다~~~");
     }
 
     private static readonly Vector2[] Dirs =
@@ -93,12 +97,13 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        var flameCount = FindObjectsOfType<LightningScript>().Length;
-        var flameProgress = flameCount / 1.5f;
-        flameProgressText.text = $"{flameProgress:f0}%";
+        flameCount = FindObjectsOfType<LightningScript>().Length;
+        flameProgress = flameCount / 1.5f;
 
-        if (flameProgress > 100.0f)
+        flameProgressText.text = $"{flameProgress:f0}%";
+        if (flameProgress >= 100.0f)
         {
+            flameProgress = 100.0f;
             CommitGameOver(GameOverReason.FlameProgress);
         }
 
@@ -178,33 +183,30 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //spriteRenderer.color = waterCollected > 0 ? Color.blue : isNearWater ? Color.cyan : Color.white;
-
-        // 물을 하나도 안모은 상태에서 물 근처에 있다면 물을 담는 선택지 밖에 없다.
         guideText.text = IsDead
             ? ""
-            : waterCollected == 0 && isNearWater
-                ? "Z키를 눌러 물을 담으세요."
+            : waterCollected != 0 && isNearWater
+                ? $"{fillWater}키를 눌러 물을 담으세요."
                 : isNearFlame && waterCollected > 0
-                    ? "X키를 눌러 물을 뿌리세요."
+                    ? $"{spreadWater}키를 눌러 물을 뿌리세요."
                     : isNearFlame && waterCollected == 0
                         ? "물을 담아 오세요!!!"
                         : "";
 
-        if (Input.GetKeyDown(KeyCode.X) && waterCollected > 0)
+        if (Input.GetKeyDown(spreadWater) && waterCollected > 0)
         {
             waterCollected--;
             bucketCount.SpendWaterBucket();
             Instantiate(waterSpillPrefab, transform.position, Quaternion.identity);
         }
-        else if (isNearWater && Input.GetKeyDown(KeyCode.Z))
+        else if (isNearWater && Input.GetKeyDown(fillWater))
         {
             if (waterCollected < waterCapacity)
             {
                 if (!workGauge.gameObject.activeSelf)
                 {
                     workGauge.gameObject.SetActive(true);
-                    workGauge.StartWork(fillingSpeed, () =>
+                    workGauge.StartWork(waterFillingSpeed, () =>
                     {
                         waterCollected++;
                         bucketCount.FillWaterBucket();
@@ -237,6 +239,56 @@ public class PlayerController : MonoBehaviour
             hpGauge.Shake();
         }
     }
+    
+    private bool UpdateMovement(float axisValue, Vector3 axis)
+    {
+        // ReSharper disable once CompareOfFloatsByEqualityOperator
+        if (Mathf.Abs(axisValue) != 1.0f)
+        {
+            return false;
+        }
+
+        var delta = axisValue * axis;
+        if (Physics2D.OverlapCircle(movePoint.position + delta, CheckOverlapRadius, whatStopsMovement))
+        {
+            return false;
+        }
+        movePoint.position += delta;
+
+        if (delta.x != 0)
+        {
+            spriteRenderer.sprite = sideBeaverSprite;
+
+            spriteRenderer.flipX = delta.x switch
+            {
+                < 0 => true,
+                > 0 => false,
+                _ => spriteRenderer.flipX
+            };
+            spriteRenderer.flipY = false;
+        }
+        else if (delta.y != 0)
+        {
+            spriteRenderer.sprite = topBeaverSprite;
+
+            spriteRenderer.flipX = false;
+            spriteRenderer.flipY = delta.y switch
+            {
+                < 0 => true,
+                > 0 => false,
+                _ => spriteRenderer.flipY
+            };
+        }
+
+        return true;
+
+    }
+    
+    public void AddMoney(int won)
+    {
+        money += won;
+        userMoneyText.text = $"Gold:{money}";
+    }
 
     public enum GameOverReason
     {
@@ -254,50 +306,5 @@ public class PlayerController : MonoBehaviour
         spriteRenderer.transform.DOBlendableLocalMoveBy(Vector2.down / 4, 0.25f);
         gameOver.Create(reason);
         workGauge.gameObject.SetActive(false);
-    }
-
-    private bool UpdateMovement(float axisValue, Vector3 axis)
-    {
-        // ReSharper disable once CompareOfFloatsByEqualityOperator
-        if (Mathf.Abs(axisValue) != 1.0f)
-        {
-            return false;
-        }
-
-        var delta = axisValue * axis;
-        if (!Physics2D.OverlapCircle(movePoint.position + delta, CheckOverlapRadius, whatStopsMovement))
-        {
-            movePoint.position += delta;
-
-
-            if (delta.x != 0)
-            {
-                spriteRenderer.sprite = sideBeaverSprite;
-
-                spriteRenderer.flipX = delta.x switch
-                {
-                    < 0 => true,
-                    > 0 => false,
-                    _ => spriteRenderer.flipX
-                };
-                spriteRenderer.flipY = false;
-            }
-            else if (delta.y != 0)
-            {
-                spriteRenderer.sprite = topBeaverSprite;
-
-                spriteRenderer.flipX = false;
-                spriteRenderer.flipY = delta.y switch
-                {
-                    < 0 => true,
-                    > 0 => false,
-                    _ => spriteRenderer.flipY
-                };
-            }
-
-            return true;
-        }
-
-        return false;
     }
 }
