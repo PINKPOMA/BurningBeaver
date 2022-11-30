@@ -275,6 +275,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1813610551}
     m_Modifications:
+    - target: {fileID: 4234033418235079841, guid: 9a560e7a0f4994e6bb991a3354ca5b04, type: 3}
+      propertyPath: m_text
+      value: "X\uB97C \uB20C\uB7EC \uBB3C\uC744 \uB2F4\uC73C\uC138\uC694."
+      objectReference: {fileID: 0}
     - target: {fileID: 4234033418235079842, guid: 9a560e7a0f4994e6bb991a3354ca5b04, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2442,7 +2446,7 @@ RectTransform:
   m_Children:
   - {fileID: 873746008}
   m_Father: {fileID: 1813610551}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -2865,7 +2869,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4033701518581625810, guid: fc251fb29154ae24fa4b4586162a8120, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4033701518581625810, guid: fc251fb29154ae24fa4b4586162a8120, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3439,8 +3443,8 @@ RectTransform:
   - {fileID: 2102536531}
   - {fileID: 2127123148}
   - {fileID: 735911037}
-  - {fileID: 1466653800}
   - {fileID: 1279020536}
+  - {fileID: 1466653800}
   - {fileID: 370294924}
   - {fileID: 1979391738}
   m_Father: {fileID: 0}
